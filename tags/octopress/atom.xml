@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: octopress, | Blog{Rachel|BENM}]]></title>
   <link href="http://rachelwxm.github.io/tags/octopress/atom.xml" rel="self"/>
   <link href="http://rachelwxm.github.io/"/>
-  <updated>2014-07-16T23:17:21+08:00</updated>
+  <updated>2014-07-16T23:18:43+08:00</updated>
   <id>http://rachelwxm.github.io/</id>
   <author>
     <name><![CDATA[Wu Xiaomeng(Rachel)]]></name>
@@ -32,7 +32,7 @@ cd octopress/_deploy
 git pull origin master
 </code>
 <font color="#FF0000">如果想要强制推送本地代码,可以执行<code>git push -f</code>。 &mdash;by
-Rahel </font>
+Rahel </font> <br/>
 跳出目录，重新deploy：
 <code>
 cd ..
