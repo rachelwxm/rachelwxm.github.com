@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>PSim-a pilot study sequencing simulator - Blog{Rachel|BENM}</title>
+  <meta name="author" content="Wu Xiaomeng(Rachel)">
+
+  
+  <meta name="description" content="PSim 用户使用手册 简介 名称：PSim-a pilot study sequencing simulator
+作者：Rachel Wu(&#x72;&#x61;&#99;&#x68;&#x65;&#108;&#119;&#x75;&#x31;&#x32;&#51;&#x40;&#103;&# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rachelwxm.github.io/blog/2014/04/21/psim-a-pilot-study-sequencing-simulator/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Blog{Rachel|BENM}" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+ 	<div id="logoText"></div>
+  	<div id="logoLeft"></div>
+  	<div id="logoText"></div>
+  	<div id="logoRight"></div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Blog{Rachel|BENM}</a></h1>
+  
+    <h2>A blog for bioinformatics learning</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com.hk/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:rachelwxm.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">PSim-a Pilot Study Sequencing Simulator</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-21T16:57:44+08:00" pubdate data-updated="true">Apr 21<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>PSim 用户使用手册</h2>
+
+<h3>简介</h3>
+
+<p><strong>名称</strong>：PSim-a pilot study sequencing simulator<br/>
+<strong>作者</strong>：Rachel Wu(<a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#114;&#x61;&#x63;&#x68;&#101;&#x6c;&#x77;&#117;&#x31;&#50;&#x33;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#x72;&#x61;&#99;&#x68;&#x65;&#108;&#119;&#x75;&#x31;&#x32;&#51;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a>)，BENM Feng(<a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#66;&#x69;&#x6e;&#x78;&#105;&#97;&#x6f;&#70;&#101;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#x42;&#x69;&#110;&#120;&#x69;&#97;&#x6f;&#70;&#101;&#110;&#103;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;</a>)<br/>
+<strong>版本</strong>：1.5<br/>
+<strong>更新日期</strong>：2014-04-20 <br/>
+<strong>依存包</strong>：perl，Math-Random模块<br/>
+<strong>简要描述</strong>：<br/>
+PSim是一个用来模拟NGS测序数据的实验软件包，用perl语言编写。它可以模拟固定读长长度（如illumina或SOLiD）或随机读长长度（如Roche 454、Ion Torrent或PacBio）、单端测序（single end sequencing）或者双端测序（pair-end sequencing）、常规样本测序或损伤DNA样本测序、基因组DNA或cDNA测序等。用户可以提供指定的模拟参考序列，或者由程序根据设定长度随机生成参考序列。模拟数据与参考序列之间可以存在结构变异（structure variation）或单核苷酸多态性（single nucleotide polymorphism），这些参数可指定位点、区域及相应概率生成或随机生成。<br/>
+在PSim程序的流程设计中，模拟了真实样本的处理过程，包括：模板DNA与已知序列的变异、*DNA片段损伤，*样品预扩增，*单链建库/双链建库，建库过程随机打断、加入测序特异性接头（adapter）或PE连接序列（linker）、测序错误的产生、生成测序质量值等。<br/>
+*标记特指损伤DNA测序步骤。</p>
+
+<!--more-->
+
+
+<h3>安装</h3>
+
+<p><strong>获取及安装</strong>：<br/>
+PSim软件包可以在github网站（<a href="https://github.com/rachelwxm/Psim">https://github.com/rachelwxm/Psim</a> ）下载。<br/>
+PSim依赖于perl语言，用户需在安装了perl软件的计算机上使用；程序中使用到了Math-Random的生成泊松分布数函数，用户需自行安装该模块。<br/>
+Perl安装方式：</p>
+
+<ul>
+<li>Linux系统中通常以预先安装了perl程序，无需重复安装；</li>
+<li>Windows系统用户请在activestate网站（<a href="http://www.activestate.com/activeperl">http://www.activestate.com/activeperl</a> ）下载并安装activeperl。</li>
+</ul>
+
+
+<p>Math-Random模块安装方式:<br/>
+1. 使用CPAN模块自动安装（需要root权限）：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#Linux用户
+</span><span class='line'>perl –MCPAN –e shell
+</span><span class='line'>#初次运行需要做一些设置，选择CPAN镜像站点
+</span><span class='line'>cpan&gt;install Math::Random
+</span><span class='line'>cpan&gt;q
+</span><span class='line'>#windows用户
+</span><span class='line'>ppm
+</span><span class='line'>ppm&gt;install Math::Random</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  <br/>
+2. 手动安装<br/>
+在<a href="http://search.cpan.org/~grommel/Math-Random-0.70/Random.pm">http://search.cpan.org/~grommel/Math-Random-0.70/Random.pm</a> 下载模块源代码，然后在终端中输入：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tar zxvf Math-Random-0.70.tar.gz
+</span><span class='line'>cd Math-Random-0.70
+</span><span class='line'>perl Makefile.PL
+</span><span class='line'>make
+</span><span class='line'>make test
+</span><span class='line'>make install
+</span><span class='line'>#如果没有root权限，请手动设定安装路径
+</span><span class='line'>tar zxvf Math-Random-0.70.tar.gz
+</span><span class='line'>cd Math-Random-0.70
+</span><span class='line'>perl Makefile.PL PREFIX=YOURDIR
+</span><span class='line'>make
+</span><span class='line'>make test
+</span><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>功能</h3>
+
+<ul>
+<li>生成随机序列<br/>
+生成n条指定长度或者n条长度符合泊松分布的序列，可用于生成测试的参考序列。</li>
+</ul>
+
+
+<p>主程序参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">perl</span> <span class="n">GenerateSeq</span><span class="o">.</span><span class="n">pl</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">pre</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">auto</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">OUTFILE</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">n</span> <span class="n">NUM</span>                <span class="n">number</span> <span class="n">of</span> <span class="n">sequence</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">l</span> <span class="n">NUM</span> <span class="ow">or</span> <span class="n">NUM</span><span class="p">,</span><span class="n">NUM</span><span class="o">...</span>   <span class="nb">length</span> <span class="n">of</span> <span class="nb">each</span> <span class="n">sequence</span><span class="p">,</span> <span class="n">separate</span> <span class="n">different</span> <span class="nb">length</span> <span class="n">by</span> <span class="s">&quot;,&quot;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">pre</span> <span class="n">CHAR</span>             <span class="n">prefix</span> <span class="n">of</span> <span class="n">your</span> <span class="n">sequence</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">auto</span>                 <span class="n">randomly</span> <span class="n">generate</span> <span class="n">n</span> <span class="n">sequences</span> <span class="k">for</span> <span class="n">Poisson</span> <span class="n">distribution</span> <span class="n">with</span> <span class="n">average</span> <span class="nb">length</span> <span class="n">of</span> <span class="err">“–</span><span class="n">l</span><span class="err">”</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>示例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#生成5条长度分别为3000bp, 4000bp, 6000bp, 5000bp, 8000bp的序列，序列名称前缀为test-1，序列文件名称为test-1.fa</span>
+</span><span class='line'><span class="n">perl</span> <span class="n">GenerateSeq</span><span class="o">.</span><span class="n">pl</span> <span class="err">–</span><span class="n">n</span> <span class="mi">5</span> <span class="err">–</span><span class="n">l</span> <span class="mi">3000</span><span class="p">,</span><span class="mi">4000</span><span class="p">,</span><span class="mi">6000</span><span class="p">,</span><span class="mi">5000</span><span class="p">,</span><span class="mi">8000</span> <span class="err">–</span><span class="n">pre</span> <span class="n">test</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="n">test</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="n">fa</span>
+</span><span class='line'><span class="c1">#生成5条平均长度为5000bp的序列, 序列名称前缀为test-2, 序列文件名称为test-2.fa</span>
+</span><span class='line'><span class="n">perl</span> <span class="n">GenerateSeq</span><span class="o">.</span><span class="n">pl</span> <span class="err">–</span><span class="n">n</span> <span class="mi">5</span> <span class="err">–</span><span class="n">l</span> <span class="mi">5000</span> <span class="err">–</span><span class="n">pre</span> <span class="n">test</span><span class="o">-</span><span class="mi">2</span> <span class="err">–</span><span class="n">auto</span> <span class="o">&gt;</span> <span class="n">test</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="n">fa</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>结构变异 <br/>
+结构变异是指基因组内大于1kb的DNA片段的插入（insertion）、缺失（deletion）、重复（tandem repeat）、倒位（reversion）及易位（translocation），在本程序中也包括短片段的插入和缺失。如设定指定位置变异，用户需在运行模拟程序前编写包含结构变异信息的文件，参见example文件夹中的sv_example.txt文件，格式为：第一列是参考序列名称（与输入参考序列的名称应完全相同），第二列是结构变异类型（包括deletion、insertion、tandem_repeat、reversion及translocation），第三列是位点、长度等信息，具体如下：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">deletion</span>  <span class="err">起始位点</span><span class="mi">1</span><span class="err">，长度</span><span class="mi">1</span><span class="err">；起始位点</span><span class="mi">2</span><span class="err">，长度</span><span class="mi">2</span><span class="err">；……</span>
+</span><span class='line'><span class="c1">#不同信息之间以分号“;”隔开</span>
+</span><span class='line'><span class="n">insertion</span>  <span class="err">插入位点</span><span class="mi">1</span><span class="err">，序列</span><span class="mi">1</span><span class="err">；插入位点</span><span class="mi">2</span><span class="err">，序列</span><span class="mi">2</span><span class="err">；……</span>
+</span><span class='line'><span class="n">inversion</span>  <span class="err">起始位点</span><span class="mi">1</span><span class="err">，长度</span><span class="mi">1</span><span class="err">；起始位点</span><span class="mi">2</span><span class="err">，长度</span><span class="mi">2</span><span class="err">；……</span>
+</span><span class='line'><span class="n">tandem_repeat</span>  <span class="err">起始位点</span><span class="mi">1</span><span class="err">，长度</span><span class="mi">1</span><span class="err">，重复次数</span><span class="mi">1</span><span class="err">；起始位点</span><span class="mi">2</span><span class="err">，长度</span><span class="mi">2</span><span class="err">，重复次数</span><span class="mi">2</span><span class="err">；……</span>
+</span><span class='line'><span class="n">translocation</span>  <span class="err">起始位点</span><span class="mi">1</span><span class="err">，长度</span><span class="mi">1</span><span class="err">，插入位点</span><span class="mi">1</span><span class="err">；起始位点</span><span class="mi">1</span><span class="err">，长度</span><span class="mi">1</span><span class="err">，插入位点</span><span class="mi">1</span><span class="err">；……</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>主程序参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="o">--</span><span class="n">sv</span> <span class="sr">&lt;NUM|FILE&gt;</span>  <span class="n">structure</span> <span class="n">variation</span> <span class="n">rate</span> <span class="ow">and</span> <span class="n">average</span> <span class="nb">length</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="mf">0.1</span><span class="p">:</span><span class="mi">3000</span><span class="p">)</span> <span class="ow">or</span> <span class="n">specific</span> <span class="n">sv</span> <span class="n">type</span> <span class="ow">and</span> <span class="n">site</span> <span class="n">file</span><span class="p">(</span><span class="nb">format</span> <span class="n">refer</span> <span class="n">to</span> <span class="o">..</span><span class="sr">/example/s</span><span class="n">v_example</span><span class="o">.</span><span class="n">txt</span><span class="p">)</span>
+</span><span class='line'><span class="err">示例：</span>
+</span><span class='line'><span class="c1">#根据预先设定的结构变异信息文件(如DIR/PSim/example/sv_example.txt)对参考序列产生变异</span>
+</span><span class='line'><span class="o">--</span><span class="n">sv</span> <span class="n">DIR</span><span class="sr">/PSim/i</span><span class="n">nput</span><span class="o">/</span><span class="n">sv_example</span><span class="o">.</span><span class="n">txt</span>
+</span><span class='line'><span class="c1">#随机生成结构变异，变异序列长度占参考序列全长的10%，发生结构变异片段的平均长度是3000bp</span>
+</span><span class='line'><span class="o">--</span><span class="n">sv</span> <span class="mf">0.1</span><span class="p">:</span><span class="mi">3000</span>
+</span><span class='line'><span class="c1">#无sv变异</span>
+</span><span class='line'><span class="o">--</span><span class="n">sv</span> <span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>单核苷酸多态性 <br/>
+如设定指定位点的突变，用户需在运行模拟程序前编写包含SNP变异信息的文件，参见example文件夹中的snp_example.txt文件，格式为：第一列是参考序列名称（与输入参考序列的名称应完全相同），第二列是突变位置，第三列是可能突变的碱基，第四列是突变成不同碱基的概率。三四列不同碱基或数值之间用逗号隔开。</li>
+</ul>
+
+
+<p>主程序参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="o">--</span><span class="n">snp</span> <span class="sr">&lt;NUM|FILE&gt;</span> <span class="n">random</span> <span class="n">snp</span> <span class="n">rate</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span> <span class="ow">or</span> <span class="n">specific</span> <span class="n">snp</span> <span class="n">site</span> <span class="ow">and</span> <span class="n">rate</span> <span class="n">file</span> <span class="p">(</span><span class="nb">format</span> <span class="n">refer</span> <span class="n">to</span> <span class="o">..</span><span class="sr">/example/s</span><span class="n">np_examp</span> <span class="ow">le</span><span class="o">.</span><span class="n">txt</span><span class="p">)</span>
+</span><span class='line'><span class="err">示例：</span>
+</span><span class='line'><span class="c1">#根据预先设定的SNP信息文件(如DIR/PSim/input/snp_info.txt)对参考序列产生变异</span>
+</span><span class='line'><span class="o">--</span><span class="n">snp</span> <span class="n">DIR</span><span class="sr">/PSim/</span><span class="n">example</span><span class="o">/</span><span class="n">snp_example</span><span class="o">.</span><span class="n">txt</span>
+</span><span class='line'><span class="c1">#随机生成SNP突变，突变位点数目占参考序列全长的0.1%</span>
+</span><span class='line'><span class="o">--</span><span class="n">snp</span> <span class="mf">0.001</span>
+</span><span class='line'><span class="c1">#无SNP突变</span>
+</span><span class='line'><span class="o">--</span><span class="n">snp</span> <span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>文库构建<br/>
+文库构建过程包括：样本的随机打断及连接接头序列。<br/>
+DNA样本随机打断产生DNA短片段（fragment），对于固定读长的测序方法，应尽量保证全部fragment长度大于读长，对于非固定读长的测序方法，fragment长度即为读长。用户需设定fragment的平均长度（-fragmean）、标准差（-fragsd）及是否有长度限制（-fraglim）。类似Illumina的测序方法中，在fragment两端连接接头（adapter）片段；类似Roche 454 PE 测序方法中在fragment首位连接Linker序列。</li>
+</ul>
+
+
+<p>主程序参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="o">--</span><span class="n">cov</span> <span class="sr">&lt;NUM&gt;</span>  <span class="n">sequencing</span> <span class="n">coverage</span> <span class="n">of</span> <span class="n">reference</span> <span class="n">sequence</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">fragmean</span> <span class="sr">&lt;INT&gt;</span>  <span class="n">average</span> <span class="nb">length</span> <span class="n">of</span> <span class="n">library</span> <span class="n">fragment</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">fragsd</span> <span class="sr">&lt;INT&gt;</span>    <span class="n">standard</span> <span class="n">deviation</span> <span class="n">of</span> <span class="n">library</span> <span class="n">fragment</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">fraglim</span> <span class="sr">&lt;INT&gt;</span>   <span class="n">limit</span> <span class="nb">length</span> <span class="n">of</span> <span class="n">fragment</span> <span class="n">library</span><span class="p">(</span><span class="s">&quot;20+&quot;</span> <span class="n">means</span> <span class="n">must</span> <span class="n">above</span> <span class="mi">20</span><span class="n">nt</span><span class="p">,</span> <span class="ow">and</span> <span class="s">&quot;240-&quot;</span> <span class="n">means</span> <span class="n">must</span> <span class="n">shorter</span> <span class="n">than</span> <span class="mi">240</span><span class="n">nt</span><span class="p">,</span><span class="k">if</span><span class="p">(</span><span class="o">-</span><span class="n">damage</span><span class="p">)</span> <span class="n">this</span> <span class="n">parameter</span> <span class="n">default</span><span class="o">=</span><span class="mi">20</span><span class="o">+</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">adapter</span> <span class="sr">&lt;CHAR&gt;</span>  <span class="n">adapter</span> <span class="n">sequence</span> <span class="p">(</span><span class="n">default</span> <span class="n">sequence</span> <span class="n">refer</span> <span class="n">to</span> <span class="o">..</span><span class="sr">/example/</span><span class="n">adapterIllumina_example</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span> <span class="nb">split</span> <span class="n">two</span> <span class="n">adapters</span> <span class="n">by</span> <span class="s">&quot;:&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#在Roche 454 PE测序方法中：</span>
+</span><span class='line'><span class="o">--</span><span class="n">insert</span> <span class="sr">&lt;INT&gt;</span>    <span class="n">average</span> <span class="n">insert</span> <span class="n">size</span> <span class="ow">and</span> <span class="n">sd</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">8000</span><span class="p">:</span><span class="mi">30</span> <span class="k">if</span> <span class="o">--</span><span class="n">pe</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">linker</span> <span class="sr">&lt;CHAR&gt;</span>   <span class="n">PE</span> <span class="n">insert</span> <span class="n">seq</span> <span class="p">(</span><span class="n">default</span><span class="o">=\</span><span class="err">&quot;</span><span class="n">ATAACTTCGTATAATGTATGCTATACG</span> <span class="n">AAGTTAT</span><span class="o">\</span><span class="err">&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>示例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#模拟5倍覆盖度、fragment平均长度为150、标准差为6、使用默认接头序列</span>
+</span><span class='line'><span class="o">--</span><span class="n">cov</span> <span class="mi">5</span> <span class="o">--</span><span class="n">fragmean</span> <span class="mi">150</span> <span class="o">--</span><span class="n">fragsd</span> <span class="mi">6</span>
+</span><span class='line'><span class="c1">#Roche 454 PE，模拟4倍覆盖度、插入片段长度均值8kb、方差35、fragment平均长度为650、标准差为50、使用默认linker序列</span>
+</span><span class='line'><span class="o">--</span><span class="n">pe</span> <span class="o">--</span><span class="n">cov</span> <span class="mi">4</span> <span class="o">--</span><span class="n">insert</span> <span class="mi">8000</span><span class="p">:</span><span class="mi">35</span> <span class="o">--</span><span class="n">fragmean</span> <span class="mi">650</span> <span class="o">--</span><span class="n">fragsd</span> <span class="mi">50</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>RNA-seq（cDNA测序）<br/>
+根据基因注释gff文件中给出的不同转录本的信息，以转录本为参考序列生成模拟测序数据。gff（General feature format）文件格式请参阅Sanger网站<a href="http://www.sanger.ac.uk/resources/software/gff/spec.html">http://www.sanger.ac.uk/resources/software/gff/spec.html</a> 。</li>
+</ul>
+
+
+<p>主程序参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'> <span class="o">--</span><span class="n">cdna</span>                <span class="n">RNA</span><span class="o">-</span><span class="n">SEQ</span> <span class="n">sequencing</span>
+</span><span class='line'> <span class="o">--</span><span class="n">gff</span> <span class="sr">&lt;FILE&gt;</span>     <span class="n">input</span> <span class="n">gene</span> <span class="n">gff</span> <span class="n">file</span>
+</span><span class='line'> <span class="o">--</span><span class="n">covcdna</span> <span class="sr">&lt;INT&gt;</span>  <span class="n">mean</span> <span class="n">coverage</span> <span class="n">of</span> <span class="n">cDNA</span> <span class="n">sequences</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">10</span> <span class="k">if</span> <span class="o">--</span><span class="n">cdna</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>示例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#模拟RNA-seq测序，gff文件在DIR/PSim/example/gff_example.txt，测序覆盖度为20倍</span>
+</span><span class='line'><span class="o">--</span><span class="n">cdna</span> <span class="o">--</span><span class="n">gff</span> <span class="n">DIR</span><span class="sr">/PSim/</span><span class="n">example</span><span class="o">/</span><span class="n">gff_example</span><span class="o">.</span><span class="n">txt</span> <span class="err">–</span><span class="n">covcdna</span> <span class="mi">20</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>损伤DNA测序<br/>
+DNA损伤模型为：损伤DNA的两条链末端不能够完全互补，形成粘性末端，粘性末端长度范围由参数—overhang设置；每条DNA片段不同位点都有一定的损伤（变异）概率，不同位点的损伤分布状态，需要用户输入用于训练模型的矩阵，参照DIR/PSim/example/mut site_example. txt；某些区域会有定向突变（如某种碱基排布结构容易发生某种情况的变异），这一内容可以在SNP或SV的信息中提供。 <br/>
+损伤DNA测序的建库方式有单链建库和双链建库两种方式。单链建库时每条链的变异信息可以独立保留下来；双链建库中的补平末端操作（fill-in reaction）会将不能扩增补平的3’端剪切掉，损失部分的DNA及损伤信息，并且在两端都可扩增的情况双末端扩增概率可有参数&mdash;effic设置。在两种方法中DNA片段两条链都存在一定的丢失率，用户可通过参数&mdash;lost或&mdash;ds设置。<br/>
+损伤DNA由于样本量小，建库前期会先进行预扩增扩大样本量，PCR扩增倍数可由参数&mdash;ampmean设置，扩增效率符合泊松分布。</li>
+</ul>
+
+
+<p>主程序参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="o">--</span><span class="n">damage</span>   <span class="n">the</span> <span class="n">sequencing</span> <span class="n">sample</span> <span class="n">have</span> <span class="n">overhanging</span> <span class="ow">and</span> <span class="n">injured</span> <span class="n">end</span>
+</span><span class='line'><span class="o">--</span><span class="n">overhang</span> <span class="sr">&lt;INT&gt;</span>  <span class="n">overhang</span> <span class="nb">length</span> <span class="n">range</span> <span class="n">of</span> <span class="n">double</span> <span class="n">strain</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="s">&quot;3_20&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">library</span> <span class="sr">&lt;INT&gt;</span>   <span class="n">library</span> <span class="n">preparation</span> <span class="n">type</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">single</span> <span class="n">strain</span><span class="p">,</span><span class="mi">2</span><span class="o">=</span><span class="n">double</span> <span class="n">strain</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">ds</span> <span class="sr">&lt;NUM&gt;</span>    <span class="n">rate</span> <span class="n">of</span> <span class="n">lost</span> <span class="n">one</span> <span class="n">strain</span> <span class="n">of</span> <span class="n">double</span> <span class="n">strain</span> <span class="n">library</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">lost</span> <span class="sr">&lt;NUM&gt;</span>  <span class="n">lost</span> <span class="n">rate</span> <span class="n">single</span> <span class="n">strain</span> <span class="k">while</span> <span class="n">library</span><span class="o">=</span><span class="mi">1</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">ampmean</span> <span class="sr">&lt;NUM&gt;</span>   <span class="n">average</span> <span class="n">amplification</span> <span class="nb">times</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">850</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">mutarray</span> <span class="sr">&lt;FILE&gt;</span> <span class="n">mutation</span> <span class="n">rate</span> <span class="n">array</span> <span class="n">file</span> <span class="p">(</span><span class="nb">format</span> <span class="n">refer</span> <span class="n">to</span> <span class="o">..</span><span class="sr">/examp le/m</span><span class="n">utationarray_example</span><span class="p">,</span> <span class="n">default</span> <span class="mi">100</span><span class="nv">%</span> <span class="nv">C</span><span class="o">-&gt;</span><span class="n">T</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">mutsite</span> <span class="sr">&lt;FILE&gt;</span>  <span class="n">mutation</span> <span class="n">possibility</span> <span class="n">along</span> <span class="n">fragment</span> <span class="n">site</span> <span class="p">(</span><span class="nb">format</span> <span class="n">refer</span> <span class="n">to</span> <span class="o">..</span><span class="sr">/example/m</span><span class="n">utationsite_example</span><span class="p">,</span> <span class="n">default</span> <span class="mf">0.01</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">effic</span> <span class="sr">&lt;NUM&gt;</span> <span class="n">efficiency</span> <span class="n">of</span> <span class="n">fill</span><span class="o">-</span><span class="n">in</span> <span class="n">reaction</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>示例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#模拟损伤DNA测序，末端非互补区域长度范围是3nt~20nt，采用双链建库方式，建库过程单链损失率为30%，双末端扩增效率为30%，损伤模型位点矩阵文件是DIR/PSim/example e/mutsite_example.txt, 损伤碱基转换矩阵文件是DIR/PSim/example/mutarray_example.txt，PCR扩增倍数均值为800倍。</span>
+</span><span class='line'><span class="o">--</span><span class="n">damage</span> <span class="o">--</span><span class="n">overhang</span> <span class="mi">3_20</span> <span class="o">--</span><span class="n">library</span> <span class="mi">2</span> <span class="o">--</span><span class="n">ds</span> <span class="mf">0.3</span> <span class="o">--</span><span class="n">ampmean</span> <span class="mi">800</span> <span class="o">--</span><span class="n">mutarray</span> <span class="n">DIR</span><span class="sr">/PSim/</span><span class="n">example</span><span class="sr">/mutarray_example.txt --mutsite DIR/</span><span class="n">PSim</span><span class="sr">/example/m</span><span class="n">uts</span> <span class="n">ite_example</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">effic</span> <span class="mf">0.3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>测序 <br/>
+对于固定读长的测序方法（如Illumina和SOLiD），需用户在&mdash;read参数中设定读长长度；对于SOLiD测序，还需要指定测序起始碱基类别。在测序过程中，同时产生每个碱基的质量值，值域为0~40，SOLiD和Roche 454测序结果中直接以数值表示，Illumina用ASCII码表示，根据不同的fastq格式有两种表示范围（Sanger/Illumina），详情参见<a href="http://en.wikipedia.org/wiki/FASTQ_format%E3%80%82">http://en.wikipedia.org/wiki/FASTQ_format%E3%80%82</a></li>
+</ul>
+
+
+<p>主程序参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="o">--</span><span class="nb">read</span> <span class="sr">&lt;INT&gt;</span>    <span class="n">average</span> <span class="nb">length</span> <span class="n">of</span> <span class="n">reads</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">error</span> <span class="sr">&lt;NUM&gt;</span> <span class="n">sequencing</span> <span class="n">error</span> <span class="n">rate</span> <span class="ow">and</span> <span class="n">possibilities</span> <span class="n">of</span> <span class="n">single</span> <span class="n">base</span> <span class="n">error</span><span class="p">,</span> <span class="n">insert</span> <span class="ow">and</span> <span class="n">deletion</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;0.0005:0.34:0.33:0.33&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">qtype</span> <span class="sr">&lt;CHAR&gt;</span>    <span class="n">quality</span> <span class="n">type</span> <span class="p">(</span><span class="o">!=</span><span class="n">Sanger</span> <span class="nb">format</span><span class="p">,</span> <span class="nv">@</span><span class="err">=</span><span class="nv">illumina</span> <span class="mf">1.3</span><span class="o">~</span><span class="mf">1.8</span><span class="o">-</span> <span class="nb">format</span><span class="p">,</span> <span class="n">default</span><span class="o">=!</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">qmean</span> <span class="sr">&lt;NUM&gt;</span> <span class="n">peak</span> <span class="n">value</span> <span class="n">of</span> <span class="n">quality</span> <span class="n">score</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">37</span><span class="p">)</span>
+</span><span class='line'><span class="o">--</span><span class="n">qsd</span> <span class="sr">&lt;NUM&gt;</span>   <span class="n">standard</span> <span class="n">deviation</span> <span class="n">of</span> <span class="n">quality</span> <span class="n">score</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="n">SOLiD</span>
+</span><span class='line'><span class="o">--</span><span class="n">header</span> <span class="sr">&lt;CHAR&gt;</span>   <span class="n">sequencing</span> <span class="n">header</span> <span class="n">base</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">G</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>示例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#读长长度202bp，测序错误率为0.001，三种类型（error，insert和deletion）的比重分别为0.5,0.25,0.25，平均质量值35，标准差1.5，质量值表示方式为Sanger类型。</span>
+</span><span class='line'><span class="o">--</span><span class="nb">read</span> <span class="mi">202</span> <span class="o">--</span><span class="n">error</span> <span class="mf">0.001</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mf">0.25</span><span class="p">:</span><span class="mf">0.25</span> <span class="o">--</span><span class="n">qtype</span> <span class="o">!</span> <span class="o">--</span><span class="n">qmean</span> <span class="mi">35</span> <span class="o">--</span><span class="n">qsd</span> <span class="mf">1.5</span>
+</span><span class='line'><span class="c1">#读长长度50bp，测序错误率为0.0002，三种类型（error，insert和deletion）的比重分别为0.5,0.25,0.25，平均质量值37，标准差1，SOLiD测序，起始碱基为A。</span>
+</span><span class='line'><span class="o">--</span><span class="nb">read</span> <span class="mi">50</span> <span class="o">--</span><span class="n">error</span> <span class="mf">0.0002</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mf">0.25</span><span class="p">:</span><span class="mf">0.25</span> <span class="o">--</span><span class="n">qmean</span> <span class="mi">37</span> <span class="o">--</span><span class="n">qsd</span> <span class="mi">1</span> <span class="o">--</span><span class="n">header</span> <span class="n">A</span>
+</span><span class='line'><span class="err">生成文件：</span>
+</span><span class='line'><span class="n">output</span><span class="o">.</span><span class="n">fasta</span><span class="o">--</span><span class="n">Roche</span><span class="err">或</span><span class="n">SOLiD</span><span class="err">的测序</span><span class="n">reads</span><span class="err">文件，一行名称一行序列相间隔，序列名称前以“</span><span class="o">&gt;</span><span class="err">”开头；</span>
+</span><span class='line'>    <span class="o">&gt;</span><span class="n">PSim_Roche454</span><span class="mf">.1</span>
+</span><span class='line'>    <span class="n">CCTAACCCTAACCCTAACCCTCGCG</span>
+</span><span class='line'>    <span class="n">output</span><span class="o">.</span><span class="n">qual</span><span class="o">--</span><span class="n">Roche</span><span class="err">或</span><span class="n">SOLiD</span><span class="err">的测序质量文件，一行名称一行质量值相间隔，序列名称前以“</span><span class="o">&gt;</span><span class="err">”开头，质量值范围</span><span class="mi">0</span><span class="o">~</span><span class="mi">40</span><span class="err">，用数字直接表示；</span>
+</span><span class='line'>    <span class="o">&gt;</span><span class="n">PSim_Roche454</span><span class="mf">.1</span>
+</span><span class='line'>    <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span> <span class="mi">38</span>
+</span><span class='line'>    <span class="n">output</span><span class="o">.</span><span class="n">fastq</span><span class="o">--</span><span class="n">llumina</span> <span class="n">SE</span><span class="err">的测序</span><span class="n">reads</span><span class="err">及质量文件，标准</span><span class="n">fastq</span><span class="err">文件格式；</span>
+</span><span class='line'>    <span class="nv">@RachelWu:1:BENM:1:1:7572:10362</span> <span class="mi">0</span><span class="p">:</span><span class="n">N:0:ATCACG</span>
+</span><span class='line'>    <span class="n">TCAAACATAAATGAGCAGGCAAGCTGGCTAGAAAACCAC</span>
+</span><span class='line'>    <span class="o">+</span>
+</span><span class='line'>    <span class="o">=&gt;</span><span class="p">?</span><span class="nv">@AABCDEEEEEEEEEEEEEEDDDDDDDDDDDDDDDD</span>
+</span><span class='line'>    <span class="n">output</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="n">fastq</span>    <span class="o">--</span><span class="n">llumina</span> <span class="n">PE</span><span class="err">的测序正向</span><span class="n">reads</span><span class="err">及质量文件，标准</span><span class="n">fastq</span><span class="err">文件格式；</span>
+</span><span class='line'>    <span class="n">output</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="n">fastq</span>    <span class="o">--</span><span class="n">llumina</span> <span class="n">PE</span><span class="err">的测序反向</span><span class="n">reads</span><span class="err">及质量文件，标准</span><span class="n">fastq</span><span class="err">文件格式；</span>
+</span><span class='line'>    <span class="n">NameRecordByPSim</span><span class="o">.</span><span class="n">txt</span><span class="o">--</span><span class="n">reads</span><span class="err">名称与其在参考序列上的位置、长度对应关系，第一列为</span><span class="n">reads</span><span class="err">名称，第二列是其在参考序列上的位置信息，包括：参考序列名称、</span><span class="n">reads</span><span class="err">编号、</span><span class="n">fragment</span><span class="err">在参考序列上的起始位点、终止位点、长度</span>
+</span><span class='line'>    <span class="o">&gt;</span><span class="n">RachelWu_1_1_0</span>  <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span> <span class="mi">0</span> <span class="n">start</span><span class="o">=</span><span class="mi">744403</span> <span class="n">end</span><span class="o">=</span><span class="mi">744493</span> <span class="nb">length</span><span class="o">=</span><span class="mi">91</span>
+</span><span class='line'>    <span class="n">SNPReportByPSim</span><span class="o">.</span><span class="n">txt</span><span class="o">--</span><span class="err">生成的</span><span class="n">SNP</span><span class="err">信息，每列信息分别是参考序列名称、</span><span class="n">SNP</span><span class="err">位点、突变前碱基、突变后碱基</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="mi">389093</span>  <span class="n">C</span>    <span class="n">A</span>
+</span><span class='line'>    <span class="n">SVReportByPSim</span><span class="o">.</span><span class="n">txt</span><span class="o">--</span><span class="err">生成的</span><span class="n">SV</span><span class="err">信息，</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="n">inversion</span>    <span class="mi">240285</span>  <span class="mi">2896</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="n">deletion</span> <span class="mi">641559</span>  <span class="mi">2205</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="n">translocation</span>    <span class="mi">533138</span>  <span class="mi">2394</span>    <span class="mi">405275</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="n">inversion</span>    <span class="mi">565987</span>  <span class="mi">3117</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="n">inserion</span>
+</span><span class='line'>    <span class="n">MutationByPSim</span><span class="o">.</span><span class="n">txt</span><span class="o">--</span><span class="err">损伤</span><span class="n">DNA</span><span class="err">测序模拟生成的损伤信息，每列信息分别是参考序列名称、</span><span class="n">reads</span><span class="err">信息编号、突变位点、突变前碱基、突变后碱基</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="mi">576</span><span class="o">-</span><span class="mi">2</span>    <span class="mi">1</span>   <span class="n">C</span>    <span class="n">T</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="mi">576</span><span class="o">-</span><span class="mi">2</span>    <span class="mi">59</span>  <span class="n">G</span>    <span class="n">C</span>
+</span><span class='line'>    <span class="n">chromosomeGRCh37</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1040010</span><span class="n">bp</span>  <span class="mi">580</span><span class="o">-</span><span class="mi">2</span>    <span class="mi">47</span>  <span class="n">T</span>    <span class="n">G</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>例子</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#用默认参数生成Illumina测序数据，生成的文件存放于PSim/output文件夹中</span>
+</span><span class='line'><span class="n">perl</span> <span class="n">PSim</span><span class="o">.</span><span class="n">pl</span> <span class="n">illumina</span> <span class="err">–</span><span class="o">-</span><span class="nb">ref</span> <span class="o">..</span><span class="sr">/example/</span><span class="n">example</span><span class="o">.</span><span class="n">fa</span> <span class="err">–</span><span class="o">-</span><span class="n">dir</span> <span class="o">../</span><span class="n">output</span>
+</span><span class='line'><span class="c1">#用默认参数生成Roche测序数据，生成的文件存放于PSim/output文件夹中</span>
+</span><span class='line'><span class="n">perl</span> <span class="n">PSim</span><span class="o">.</span><span class="n">pl</span> <span class="n">roche</span> <span class="err">–</span><span class="o">-</span><span class="nb">ref</span> <span class="o">..</span><span class="sr">/example/</span><span class="n">example</span><span class="o">.</span><span class="n">fa</span> <span class="err">–</span><span class="o">-</span><span class="n">dir</span> <span class="o">../</span><span class="n">output</span>
+</span><span class='line'><span class="c1">#用默认参数生成SOLiD测序数据，生成的文件存放于PSim/output文件夹中</span>
+</span><span class='line'><span class="n">perl</span> <span class="n">PSim</span><span class="o">.</span><span class="n">pl</span> <span class="n">solid</span> <span class="err">–</span><span class="o">-</span><span class="nb">ref</span> <span class="o">..</span><span class="sr">/example/</span><span class="n">example</span><span class="o">.</span><span class="n">fa</span> <span class="err">–</span><span class="o">-</span><span class="n">dir</span> <span class="o">../</span><span class="n">output</span>
+</span><span class='line'><span class="c1">#用示例参考序列生成15倍覆盖度、Illumina测序方法、PE测序、无SV及SNP变异、</span>
+</span><span class='line'><span class="n">perl</span> <span class="n">PSim</span><span class="o">.</span><span class="n">pl</span> <span class="n">illumina</span> <span class="err">–</span><span class="nb">ref</span> <span class="o">..</span><span class="sr">/example/</span><span class="n">example</span><span class="o">.</span><span class="n">fa</span> <span class="err">–</span><span class="n">cov</span> <span class="mi">15</span> <span class="err">–</span><span class="n">sv</span> <span class="mi">0</span> <span class="err">–</span><span class="n">snp</span> <span class="mi">0</span> <span class="err">–</span><span class="o">-</span><span class="n">dir</span> <span class="o">../</span><span class="n">output</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>   <br/>
+A  SV</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="mi">1</span><span class="o">.</span> <span class="n">Based</span> <span class="n">on</span> <span class="n">ancestral</span> <span class="n">diploid</span> <span class="n">reference</span><span class="p">(</span><span class="o">~</span><span class="mi">1</span><span class="n">Mb</span><span class="p">),</span> <span class="n">simulate</span> <span class="n">a</span> <span class="n">children</span> <span class="n">sequence</span> <span class="n">with</span> <span class="n">SVs</span><span class="p">,</span> <span class="n">including</span> <span class="n">mentioned</span> <span class="n">above</span><span class="o">.</span>
+</span><span class='line'><span class="mi">2</span><span class="o">.</span> <span class="n">Fragment</span> <span class="n">to</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="n">bp</span> <span class="n">hierarchical</span> <span class="n">insert</span> <span class="n">size</span> <span class="n">library</span><span class="p">,</span> <span class="n">insert</span> <span class="n">span</span> <span class="n">s</span><span class="o">.</span><span class="n">d</span><span class="o">.</span> <span class="o">&lt;</span><span class="mi">35</span><span class="p">;</span> <span class="mi">10</span> <span class="n">folds</span> <span class="k">for</span> <span class="nb">each</span> <span class="n">library</span><span class="o">.</span>
+</span><span class='line'><span class="mi">3</span><span class="o">.</span> <span class="n">Used</span> <span class="n">these</span> <span class="n">reads</span> <span class="k">for</span> <span class="n">denovo</span> <span class="n">assembly</span> <span class="n">to</span> <span class="n">be</span> <span class="n">a</span> <span class="n">bunch</span> <span class="n">of</span> <span class="n">contigs</span> <span class="ow">or</span> <span class="n">scaffolds</span> <span class="p">(</span><span class="n">using</span> <span class="n">SOAPdenovo</span> <span class="ow">or</span> <span class="n">Phusion</span><span class="o">-</span><span class="n">meta</span> <span class="ow">or</span> <span class="n">CA</span> <span class="ow">or</span> <span class="n">Velvet</span><span class="p">)</span>
+</span><span class='line'><span class="mi">4</span><span class="o">.</span> <span class="n">Mapped</span> <span class="n">these</span> <span class="n">reads</span> <span class="ow">and</span> <span class="n">contigs</span> <span class="n">to</span> <span class="n">reference</span><span class="p">;</span>
+</span><span class='line'><span class="mi">5</span><span class="o">.</span> <span class="n">Using</span> <span class="n">SV</span> <span class="n">detector</span> <span class="n">to</span> <span class="n">find</span> <span class="n">SV</span><span class="p">;</span>
+</span><span class='line'><span class="mi">6</span><span class="o">.</span> <span class="n">Draw</span> <span class="n">module</span> <span class="ow">and</span> <span class="n">diagnostic</span> <span class="n">depicted</span> <span class="n">figures</span><span class="p">,</span> <span class="ow">and</span> <span class="n">validation</span><span class="o">/</span><span class="n">evaluation</span> <span class="p">(</span><span class="n">FP</span><span class="p">,</span> <span class="n">FN</span><span class="p">,</span> <span class="n">TP</span><span class="p">,</span> <span class="n">TN</span><span class="p">,</span> <span class="n">Sn</span><span class="p">,</span> <span class="n">Sp</span><span class="p">,</span> <span class="n">CC</span><span class="p">,</span> <span class="n">ACP</span><span class="p">,</span> <span class="n">AC</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>B  Paleogenomics</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="mi">1</span><span class="o">.</span> <span class="n">Based</span> <span class="n">on</span> <span class="n">ancestral</span> <span class="n">diploid</span> <span class="n">reference</span><span class="p">(</span><span class="o">~</span><span class="mi">1</span><span class="n">Mb</span><span class="p">),</span> <span class="n">simulate</span> <span class="n">a</span> <span class="n">children</span> <span class="n">sequence</span> <span class="n">with</span> <span class="n">SNPs</span><span class="o">/</span><span class="n">InDels</span> <span class="n">with</span> <span class="n">same</span> <span class="n">most</span> <span class="n">part</span> <span class="n">of</span> <span class="n">same</span> <span class="n">locus</span> <span class="n">as</span> <span class="n">dbSNP</span><span class="p">,</span> <span class="ow">and</span> <span class="n">parts</span> <span class="n">of</span> <span class="n">private</span> <span class="n">diversity</span> <span class="p">(</span><span class="o">~</span><span class="mi">0</span><span class="o">.!</span><span class="nv">%</span><span class="p">)</span><span class="o">.</span>
+</span><span class='line'><span class="mi">2</span><span class="o">.</span> <span class="n">Fragment</span> <span class="n">to</span> <span class="mi">30</span><span class="o">~</span><span class="mi">200</span><span class="n">bp</span> <span class="n">with</span> <span class="n">overhanding</span> <span class="ow">or</span> <span class="n">only</span> <span class="n">single</span> <span class="n">strand</span> <span class="n">DNA</span><span class="p">;</span>
+</span><span class='line'><span class="mi">3</span><span class="o">.</span> <span class="n">Add</span> <span class="n">damage</span> <span class="n">by</span> <span class="n">nucleotide</span> <span class="n">substitution</span> <span class="n">according</span> <span class="n">to</span> <span class="n">training</span> <span class="n">stochastic</span> <span class="n">matrix</span><span class="p">;</span>
+</span><span class='line'><span class="mi">4</span><span class="o">.</span> <span class="n">PCR</span> <span class="n">duplication</span><span class="p">,</span> <span class="o">~</span><span class="mi">1000</span><span class="n">x</span><span class="o">.</span>
+</span><span class='line'><span class="mi">5</span><span class="o">.</span> <span class="n">Sequencing</span> <span class="n">with</span> <span class="n">sequencing</span> <span class="n">errors</span> <span class="p">(</span><span class="o">~</span><span class="mi">1</span><span class="nv">%</span><span class="p">)</span> <span class="k">for</span> <span class="nb">each</span> <span class="n">reads</span> <span class="n">via</span> <span class="n">stochastic</span> <span class="n">probability</span><span class="o">.</span>
+</span><span class='line'><span class="mi">6</span><span class="o">.</span>  <span class="n">Mapped</span> <span class="n">these</span> <span class="n">reads</span> <span class="n">to</span> <span class="n">reference</span><span class="p">;</span>
+</span><span class='line'><span class="mi">5</span><span class="o">.</span> <span class="n">Using</span> <span class="n">GATE</span> <span class="n">to</span> <span class="n">called</span> <span class="n">variation</span><span class="p">;</span>
+</span><span class='line'><span class="mi">6</span><span class="o">.</span> <span class="n">Find</span> <span class="n">damage</span> <span class="p">(</span><span class="n">I</span> <span class="n">will</span> <span class="k">do</span> <span class="n">this</span> <span class="n">part</span><span class="p">);</span>
+</span><span class='line'><span class="mi">7</span><span class="o">.</span> <span class="n">Draw</span> <span class="n">figures</span> <span class="k">for</span> <span class="n">evaluating</span> <span class="n">DNA</span> <span class="n">damage</span><span class="p">,</span> <span class="ow">and</span> <span class="n">their</span> <span class="n">distribution</span> <span class="n">compared</span> <span class="n">to</span> <span class="n">design</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wu Xiaomeng(Rachel)</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-21T16:57:44+08:00" pubdate data-updated="true">Apr 21<span>st</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/category/psim/'>PSim</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+	<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_renren"></a>
+<a href="http://www.jiathis.com/share?uid=1880878" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1880878" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1880878"></script>
+<!-- UY END -->
+
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2014/04/17/podxie-fa/" title="Previous Post: pod写法">&laquo; pod写法</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/21/psim-a-pilot-study-sequencing-simulator/">PSim-a Pilot Study Sequencing Simulator</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/17/podxie-fa/">Pod写法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/14/r-han-shu/">R-函数</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/13/rde-kong-zhi-jie-gou/">R的控制结构</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/21/reading-and-writing-data-1/">读入数据</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/rachelwxm">@rachelwxm</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'rachelwxm',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+<h1>Categories</h1>
+<ul id="categories">
+<li class='category'><a href='/blog/category/computing-for-data-analysis/'>Computing_for_Data_Analysis (7)</a></li>
+<li class='category'><a href='/blog/category/malbac/'>MALBAC (1)</a></li>
+<li class='category'><a href='/blog/category/mda/'>MDA (1)</a></li>
+<li class='category'><a href='/blog/category/psim/'>PSim (1)</a></li>
+<li class='category'><a href='/blog/category/r/'>R (7)</a></li>
+<li class='category'><a href='/blog/category/octopress/'>octopress (3)</a></li>
+<li class='category'><a href='/blog/category/perl/'>perl (1)</a></li>
+<li class='category'><a href='/blog/category/pod/'>pod (1)</a></li>
+ 
+</ul>
+</section>
+<section>
+  <h1>友情链接</h1>
+  <a href="http://www.52nlp.cn/" target="_blank">我爱自然语言处理</a>
+  <br>
+  <a href="http://www.cnblogs.com/tornadomeet/" target="_blank">tornadomeet-一个很牛掰的博客</a>
+  <br>
+  <a href="https://scowiki.wordpress.com/" target="_blank">BENM</a>
+  <br>
+  <a href="http://www.plob.org/" target="_blank">Public Library of Bioinformatics</a>
+  <br>
+  <a href="http://bioops.info/" target="_blank">Bioops</a>
+  <br>
+  <a href="http://bioinfo.cs.ccu.edu.tw/wiki/doku.php" target="_blank">生物資訊教學-台湾</a>
+  <br>
+  
+</section>
+<section>
+<h1>最新评论</h1>
+<div id="uyan_newcmt_unit"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1850190"></script>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Wu Xiaomeng(Rachel) -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000378192'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1000378192' type='text/javascript'%3E%3C/script%3E"));</script>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
