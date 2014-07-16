@@ -9,8 +9,9 @@
   <meta name="author" content="Wu Xiaomeng(Rachel)">
 
   
-  <meta name="description" content="PSim 用户使用手册 简介 名称：PSim-a pilot study sequencing simulator
-作者：Rachel Wu(&#114;&#97;&#x63;&#104;&#101;&#x6c;&#119;&#x75;&#49;&#x32;&#51;&#x40;&#103;&# &hellip;">
+  <meta name="description" content="[转载]Deploy时[non-fast-forward]reject问题解决方案 Github+Octopress rake deploy时[non-fast-forward]reject问题解决方案
+好久没更新blog，今天写好文deploy时发现报错： 1
+! [rejected] &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +84,75 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2014/07/16/deployshi-non-fast-forward-bao-cuo/">Deploy时[non-fast-forward]报错</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-16T22:59:23+08:00" pubdate data-updated="true">Jul 16<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>[转载]Deploy时[non-fast-forward]reject问题解决方案</h4>
+
+<p>Github+Octopress rake deploy时[non-fast-forward]reject问题解决方案
+好久没更新blog，今天写好文deploy时发现报错：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>! [rejected]        master -&gt; master (non-fast-forward)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在网络google了半下午，终于找到了解决方案：
+更换目录，并更新：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd octopress/_deploy
+</span><span class='line'>git pull origin master</span></code></pre></td></tr></table></div></figure>
+
+
+<p><font color="#FF0000">如果想要强制推送本地代码,可以执行<code>git push -f</code>。 &mdash;by
+Rahel </font>
+跳出目录，重新deploy：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ..
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>问题解决。
+参考：
+<a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress</a>
+原文地址：<a href="http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/">http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
         <h1 class="entry-title"><a href="/blog/2014/04/21/psim-a-pilot-study-sequencing-simulator/">PSim-a Pilot Study Sequencing Simulator</a></h1>
       
     
@@ -112,7 +182,7 @@
 <h3>简介</h3>
 
 <p><strong>名称</strong>：PSim-a pilot study sequencing simulator<br/>
-<strong>作者</strong>：Rachel Wu(<a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x72;&#97;&#x63;&#104;&#x65;&#x6c;&#x77;&#x75;&#49;&#x32;&#51;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#114;&#97;&#x63;&#104;&#101;&#x6c;&#119;&#x75;&#49;&#x32;&#51;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a>)，BENM Feng(<a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x42;&#x69;&#110;&#120;&#x69;&#97;&#111;&#70;&#x65;&#110;&#x67;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#x42;&#x69;&#x6e;&#120;&#x69;&#x61;&#x6f;&#x46;&#x65;&#110;&#x67;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a>)<br/>
+<strong>作者</strong>：Rachel Wu(<a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#114;&#x61;&#99;&#104;&#101;&#x6c;&#x77;&#117;&#49;&#50;&#x33;&#64;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x72;&#97;&#99;&#104;&#101;&#108;&#x77;&#117;&#x31;&#x32;&#x33;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a>)，BENM Feng(<a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#66;&#105;&#110;&#x78;&#105;&#97;&#111;&#70;&#101;&#x6e;&#103;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#66;&#105;&#110;&#120;&#x69;&#x61;&#111;&#70;&#x65;&#110;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a>)<br/>
 <strong>版本</strong>：1.5<br/>
 <strong>更新日期</strong>：2014-04-20 <br/>
 <strong>依存包</strong>：perl，Math-Random模块<br/>
@@ -550,52 +620,6 @@ PSim是一个用来模拟NGS测序数据的实验软件包，用perl语言编写
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2014/01/13/mda-and-malbacji-zhu-jie-shao/">MDA&amp;MALBAC技术介绍</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-13T12:46:38+08:00" pubdate data-updated="true">Jan 13<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>MDA</h2>
-
-<p>多重链置换扩增技术（Multiple displacement amplification, MDA）是一种不基于PCR循环的DNA扩增技术，这种扩增技术可以快速、大量扩增很少的DNA样本。<br/>
-MDA的前身是滚环扩增（Rolling Circle Amplification，RCA），RCA使用单链DNA作为扩增模板（原始实验材料是M13噬菌体)，当把这个技术应用于双链DNA模板时，成为MDA。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/13/mda-and-malbacji-zhu-jie-shao/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -611,6 +635,10 @@ MDA的前身是滚环扩增（Rolling Circle Amplification，RCA），RCA使用�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/07/16/deployshi-non-fast-forward-bao-cuo/">Deploy时[non-fast-forward]报错</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/04/21/psim-a-pilot-study-sequencing-simulator/">PSim-a Pilot Study Sequencing Simulator</a>
       </li>
     
@@ -624,10 +652,6 @@ MDA的前身是滚环扩增（Rolling Circle Amplification，RCA），RCA使用�
     
       <li class="post">
         <a href="/blog/2014/04/13/rde-kong-zhi-jie-gou/">R的控制结构</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/21/reading-and-writing-data-1/">读入数据</a>
       </li>
     
   </ul>
@@ -670,7 +694,9 @@ MDA的前身是滚环扩增（Rolling Circle Amplification，RCA），RCA使用�
 <li class='category'><a href='/blog/category/mda/'>MDA (1)</a></li>
 <li class='category'><a href='/blog/category/psim/'>PSim (1)</a></li>
 <li class='category'><a href='/blog/category/r/'>R (7)</a></li>
+<li class='category'><a href='/blog/category/github/'>github (1)</a></li>
 <li class='category'><a href='/blog/category/octopress/'>octopress (3)</a></li>
+<li class='category'><a href='/blog/category/octopress-/'>octopress, (1)</a></li>
 <li class='category'><a href='/blog/category/perl/'>perl (1)</a></li>
 <li class='category'><a href='/blog/category/pod/'>pod (1)</a></li>
  

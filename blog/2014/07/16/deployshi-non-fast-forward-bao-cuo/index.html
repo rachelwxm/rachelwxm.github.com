@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: PSim - Blog{Rachel|BENM}</title>
+  <title>deploy时[non-fast-forward]报错 - Blog{Rachel|BENM}</title>
   <meta name="author" content="Wu Xiaomeng(Rachel)">
 
   
-  <meta name="description" content="Tag: PSim">
+  <meta name="description" content="[转载]Deploy时[non-fast-forward]reject问题解决方案 Github+Octopress rake deploy时[non-fast-forward]reject问题解决方案
+好久没更新blog，今天写好文deploy时发现报错： 1
+! [rejected] &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rachelwxm.github.iotags/psim/">
+  <link rel="canonical" href="http://rachelwxm.github.io/blog/2014/07/16/deployshi-non-fast-forward-bao-cuo/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -74,35 +76,136 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: PSim</h1>
+    
+      
+        <h1 class="entry-title">Deploy时[non-fast-forward]报错</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-16T22:59:23+08:00" pubdate data-updated="true">Jul 16<span>th</span>, 2014</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="tag">
 
 
+<div class="entry-content"><h4>[转载]Deploy时[non-fast-forward]reject问题解决方案</h4>
 
-  
-  <h2>2014</h2>
+<p>Github+Octopress rake deploy时[non-fast-forward]reject问题解决方案
+好久没更新blog，今天写好文deploy时发现报错：</p>
 
-<article>
-  
-<h1><a href="/blog/2014/04/21/psim-a-pilot-study-sequencing-simulator/">PSim-a pilot study sequencing simulator</a></h1>
-<time datetime="2014-04-21T16:57:44+08:00" pubdate><span class='month'>Apr</span> <span class='day'>21</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/category/psim/'>PSim</a></span>
-</footer>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>! [rejected]        master -&gt; master (non-fast-forward)</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
+<p>在网络google了半下午，终于找到了解决方案：
+更换目录，并更新：</p>
 
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd octopress/_deploy
+</span><span class='line'>git pull origin master</span></code></pre></td></tr></table></div></figure>
+
+
+<p><font color="#FF0000">如果想要强制推送本地代码,可以执行<code>git push -f</code>。 &mdash;by
+Rahel </font>
+跳出目录，重新deploy：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ..
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>问题解决。
+参考：
+<a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress</a>
+原文地址：<a href="http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/">http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/</a></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Wu Xiaomeng(Rachel)</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-16T22:59:23+08:00" pubdate data-updated="true">Jul 16<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/category/github/'>github</a>, <a class='category' href='/blog/category/octopress/'>octopress,</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+	<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_renren"></a>
+<a href="http://www.jiathis.com/share?uid=1880878" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1880878" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1880878"></script>
+<!-- UY END -->
+
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2014/04/21/psim-a-pilot-study-sequencing-simulator/" title="Previous Post: PSim-a pilot study sequencing simulator">&laquo; PSim-a pilot study sequencing simulator</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

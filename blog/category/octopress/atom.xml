@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: octopress | Blog{Rachel|BENM}]]></title>
+  <title><![CDATA[Category: octopress, | Blog{Rachel|BENM}]]></title>
   <link href="http://rachelwxm.github.io/blog/category/octopress/atom.xml" rel="self"/>
   <link href="http://rachelwxm.github.io/"/>
-  <updated>2014-07-16T22:44:16+08:00</updated>
+  <updated>2014-07-16T23:17:21+08:00</updated>
   <id>http://rachelwxm.github.io/</id>
   <author>
     <name><![CDATA[Wu Xiaomeng(Rachel)]]></name>
@@ -14,424 +14,34 @@
 
   
   <entry>
-    <title type="html"><![CDATA[用Octopress搭建Github博客小结-发表]]></title>
-    <link href="http://rachelwxm.github.io/blog/2013/12/27/yong-octopressda-jian-githubbo-ke-xiao-jie-fa-biao/"/>
-    <updated>2013-12-27T23:15:17+08:00</updated>
-    <id>http://rachelwxm.github.io/blog/2013/12/27/yong-octopressda-jian-githubbo-ke-xiao-jie-fa-biao</id>
-    <content type="html"><![CDATA[<h3>1. rake 功能</h3>
+    <title type="html"><![CDATA[deploy时[non-fast-forward]报错]]></title>
+    <link href="http://rachelwxm.github.io/blog/2014/07/16/deployshi-non-fast-forward-bao-cuo/"/>
+    <updated>2014-07-16T22:59:23+08:00</updated>
+    <id>http://rachelwxm.github.io/blog/2014/07/16/deployshi-non-fast-forward-bao-cuo</id>
+    <content type="html"><![CDATA[<h4>[转载]Deploy时[non-fast-forward]reject问题解决方案</h4>
 
-<p><code>rake new_post['post name']</code>  生成博文框架，生成的博文文件在<br/>
-octopress/source/_posts/中，以日期和博文名称命名。<br/>
-<code>rake generate</code>    将之前编辑过的内容生成静态文件 <br/>
-<code>rake preview</code>    可以在本地localhost:4000端口预览博客内容 <br/>
-<code>rake deploy</code>   发布博客内容</p>
-
-<!--more-->
-
-
-<h4>其他rake命令</h4>
-
-<p><code>
-rake gen_deploy               相当于rake generate &amp; rake deploy  
-rake install [theme]          安装主题  
-rake isolate [filename]       只更新某篇博文   
-rake clean                    # Clean out caches: .pygments-cache, .gist-cache, .sass-cache  
-rake copydot[source,dest]     # copy dot files for deployment   
-rake integrate                # Move all stashed posts back into the posts directory, ready for site generation.  
-rake list                     # list tasks  
-rake push                     # deploy public directory to github pages  
-rake rsync                    # Deploy website via rsync  
-rake set_root_dir[dir]        # Update configurations to support publishing to root or sub directory  
-rake setup_github_pages[repo] # Set up _deploy folder and deploy branch for Github Pages deployment  
-rake update_source[theme]     # Move source to source.old, install source theme updates, replace source/_includes/navigation.ht...  
-rake update_style[theme]      # Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom  
-rake watch                    # Watch the site and regenerate when it changes  
-</code></p>
-
-<h4>例子</h4>
-
-<p>新建一篇博文，名字叫做“my first post”，Categories和tag的标签都是“life”，正文内容是“Hello Wrold！This is my first post on octopress！”。执行代码如下：<br/>
-```</p>
-
-<h1>在octopress根目录下</h1>
-
-<p>$rake new_post[&lsquo;my first post&rsquo;]
-mkdir -p source/<em>posts
-Creating new post: source/</em>posts/2014-04-21-my-first-post.markdown
-$vi source/_posts/2014-04-21-my-first-post.markdown
-  #下面是vim界面
-  1 &mdash;&ndash;
-  2 layout: post     #这个已经是自动生成的了
-  3 title: &ldquo;my first post&rdquo;     #根据上一个新建命令自动生成的，也可以在这里改成想要在网页上显示的名字
-  4 date: 2014-04-21 21:13:57 +0800    #自动按照创建时间生成的，时间会显示在博文的左上角
-  5 comments: true    #是否允许评论，当然这个功能可以使用的前提是设置了评论功能；true是允许，false是不允许
-  6 categories: life    #categories分类，多个用空格隔开
-  7 tag: life    #tag分类（前提是设置了tag分类功能，如果自动生成没有的话自己加上这一行），多个tag用空格隔开
-  8 &mdash;&ndash;
-  9 Hello World!  #换行需要在回车之前打俩空格，否则就都显示到一个段落里了
-  10 This is my first post on octopress!</p>
-
-<p>$rake generate    #把markdown格式的博文转换成html格式，并准备好push到网络上（public和_deploy文件夹中的内容）</p>
-
-<h2>Generating Site with Jekyll</h2>
-
-<p>unchanged sass/syntax/syntax.scss
-unchanged sass/bootstrap/responsive.scss
-unchanged sass/bootstrap/bootstrap.scss
-unchanged sass/screen.scss
-Configuration from YOURDIR/octopress/_config.yml
-Building site: source &ndash;> public
-Successfully generated site: source &ndash;> public
-$rake preview   #博文抢鲜看：打开浏览器&mdash;地址栏输入“localhost:4000”，预览博文格式内容，如果有错误还可以在原来的markdown文档中修改；如果觉得没什么问题了，回到终端中ctrl+c终止预览命令
-$rake deploy    #如果没有报错信息的话就可以成功发布博文了
-```</p>
-
-<h3>2. 首页只显示部分正文</h3>
-
-<p>在文章正文中插入标记<code>&lt;!--more--&gt;</code>，这样在首页中就只会显示标记前面的内容，后文以<code>Read on</code>链接代替。
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>正文开头内容，也是首页摘要显示的部分&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;!--more-->
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>&lt;p>以下内容不会显示在首页文章列表中</span></code></pre></td></tr></table></div></figure></notextile></div>
-如果想换成中文文字链接，比如“继续阅读”，可以编辑_confit.yml<br/>
+<p>Github+Octopress rake deploy时[non-fast-forward]reject问题解决方案
+好久没更新blog，今天写好文deploy时发现报错：
 <code>
-excerpt_link: "继续阅读"  #用于提示阅读完整文章的文字链接
-</code></p>
-
-<h3>3. markdown语法</h3>
-
-<p>翻译自<a href="http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet">MASHERY网站</a>。</p>
-
-<h4>标题</h4>
-
-<p>在文字前面加“#”符号表示标记级别，一个“#”表示一级标题，两个表示二级标题，以此类推。 <br/>
-```</p>
-
-<h1>我是一级标题</h1>
-
-<h2>我是二级标题</h2>
-
-<h3>我是三级标题</h3>
-
-<h4>我是四级标题</h4>
-
-<h5>我是五级标题</h5>
-
-<p>```</p>
-
-<h4>段落</h4>
-
-<p>用一个或者多个空行分隔不同段落; 在一段文字后面加上两个以上空格表示换行，相当于&lt;br>或者\n的作用。</p>
-
-<h4>强调</h4>
-
-<p>斜体：文字两端标识“<em>”或“_”，比如：
+! [rejected]        master -&gt; master (non-fast-forward)
+</code>
+在网络google了半下午，终于找到了解决方案：
+更换目录，并更新：
 <code>
-I am *emphasized*
-I am _emphasized_
+cd octopress/_deploy
+git pull origin master
 </code>
-I am </em>emphasized*<br/>
-I am <em>emphasized</em><br/>
-粗体：文字两端标识“<strong>”或“__”，比如：
+<font color="#FF0000">如果想要强制推送本地代码,可以执行<code>git push -f</code>。 &mdash;by
+Rahel </font>
+跳出目录，重新deploy：
 <code>
-I am **blod**
-I am __blod__
+cd ..
+rake deploy
 </code>
-I am </strong>blod**<br/>
-I am <strong>blod</strong></p>
-
-<h4>引用链接</h4>
-
-<p>链接的格式有三种：文章中直接引用、定义链接地址及直接显示链接。<br/>
-1. 直接引用<br/>
-<code>html
-This is [am example](http://example.com/ "Optional Title")inline link
-</code>
-This is <a href="http://example.com/" title="Optional Title">am example</a>inline link<br/>
-2. 定义链接地址<br/>
-<code>
-This is [an example][id] reference-method link.    #链接
-</code>
-This is <a href="http://example.com/" title="Optional Title Here">an example</a> reference-method link. <br/>
-3. 直接显示链接
-<code>
-&lt;http://example.com/&gt;
-&lt;address@example.com&gt;&lt;/code&gt;
-</code>
-<a href="http://example.com/">http://example.com/</a> <br/>
-<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#97;&#100;&#x64;&#114;&#101;&#115;&#x73;&#x40;&#x65;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;">&#x61;&#100;&#100;&#x72;&#x65;&#115;&#x73;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#x6d;</a></code><br/>
-4. 引用图片<br/>
-引用图片与1.中的方式相似，只是在文字前加上感叹号“！”。 <br/>
-<code>
-![Alt text](http://solutions.mashery.com/files/expand_arrow.JPG "Image call example")
-</code>
-<img src="http://solutions.mashery.com/files/expand_arrow.JPG" title="Image call example" alt="Alt text" /><br/>
-此外，如果想引用本地图片，只需把要插入的图片拷贝到source/images文件夹中，在图片引用地址种插入如<code>/images/test.jpg</code>即可。</p>
-
-<h4>代码块</h4>
-
-<ol>
-<li>在代码前后两行分别用三个反引号标注<br/>
-<code>
-</code>[language] [title] [url] [link text]
-code
-<code>
-</code></li>
-<li><a href="http://octopress.org/docs/plugins/codeblock/">用codeblock标识</a><br/>
-<code>html title http://octopress.org/docs/plugins/codeblock/ IamLink
-{ % codeblock [lang:language] [title] [url] [link text] [start:#] [mark:#,#-#] [linenos:false] % }
-code snippet
-{ % endcodeblock % }
-</code>
-[lang:language] &ndash; 程序语言<br/>
-[title] &ndash; 代码块标题<br/>
-[url] &ndash; 代码块的下载链接或参考链接<br/>
-[link text] &ndash; 上文链接的显示文字，默认是“link”<br/>
-其他信息参考前文代码块链接内容
-
-<h2><strong>参考文献</strong></h2>
-
-<p>[1] jackphil. (2012-05-16) Octopress技巧集. 来源:  <br/>
-<a href="http://blog.jackphil.com/blog/2012/05/16/octopress-tips/">http://blog.jackphil.com/blog/2012/05/16/octopress-tips/</a> <br/>
-[2] &ldquo;Markdown Cheat Sheet"，来源： <br/>
-<a href="http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet">http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet</a>
-[3] CXH.ME. (2013-09-14) Octopress的一些技巧. 来源: <br/>
-<a href="http://cxh.me/2013/09/14/tricks-about-octopress/">http://cxh.me/2013/09/14/tricks-about-octopress/</a>
-</p></p></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[用Octopress搭建Github博客小结-美化]]></title>
-    <link href="http://rachelwxm.github.io/blog/2013/12/26/yong-octopressda-jian-githubbo-ke-xiao-jie-mei-hua/"/>
-    <updated>2013-12-26T02:55:49+08:00</updated>
-    <id>http://rachelwxm.github.io/blog/2013/12/26/yong-octopressda-jian-githubbo-ke-xiao-jie-mei-hua</id>
-    <content type="html"><![CDATA[<h3>1. 主题</h3>
-
-<p>到目前为止生成的博客页面是统一默认的样式，如果不喜欢当前主题可以在<a href="http://opthemes.com/">Opthemes</a>下载喜欢的第三方主题。以我使用的darkstripes为例，安装方法为：
-<code>sh
-cd octopress
-git clone git://github.com/amelandri/darkstripes.git .themes/darkstripes
-rake install['darkstripes']
-rake generate
-</code></p>
-
-<!--more-->
-
-
-<h3>2. 新建标签页</h3>
-
-<p>生成新标签页，比如“about”
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>rake new_page["about"]
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div>
-在顶栏增加新页面：编辑
-<code>source/_includes/custom/navigation.html</code>
-文件，插入如下格式的内容：
-<code>&lt;li&gt;&lt;a href="/about"&gt;About Me&lt;/a&gt;&lt;/li&gt;</code>
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>navigation.html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;main-navigation&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Blog<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/archives&quot;</span><span class="nt">&gt;</span>Archives<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/about&quot;</span><span class="nt">&gt;</span>About Me<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-编辑新标签内容：
-修改
-<code>octopress/source/about/index.markdown</code>
-文件，添加要显示的信息。</p>
-
-<h3>3. 侧边栏</h3>
-
-<p>在国内基本无法访问脸书和推特，所以自带模板的这些功能可以删掉。方法是编辑_config.yml，注释掉相关内容，同时可以补全作者名称等博客信息。</p>
-
-<p><p><a href="http://codemacro.com/2012/07/18/add-tag-to-octopress/">在侧边栏增加标签云(tag cloud)</a>
-<p><a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">在侧边栏增加分类(category)</a>
-<p><a href="http://www.yanjiuyanjiu.com/blog/20130402/">添加about me边栏</a> </p>
-Tips:<br/>
-生成category的方法很简单，自动生成的博文框架开头会让作者手动填写，如下所示  <br/>
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;hr />
-</span><span class='line'>
-</span><span class='line'>&lt;p> layout: post
-</span><span class='line'> title: &ldquo;用Octopress搭建Github博客小结-美化&rdquo;
-</span><span class='line'> date: 2013-12-26 02:55:49 +0800
-</span><span class='line'> comments: true           #是否显示评论栏
-</span><span class='line'> categories: Octopress    #在这里填写分类信息，多个以空格隔开&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;hr />
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>4. 评论与转发</h3>
-
-<p>在_config.yml中加入
-<code>weibo_share: true</code>
-。在<code>source/_includes/post/</code>文件夹中创建weibo.html文件，把下面两段代码粘贴到weibo.html中。
-<code>html share
-&lt;!-- JiaThis Button BEGIN --&gt;
-&lt;div class="jiathis_style_24x24"&gt;
-&lt;a class="jiathis_button_tsina"&gt;&lt;/a&gt;
-&lt;a class="jiathis_button_renren"&gt;&lt;/a&gt;
-&lt;a class="jiathis_button_email"&gt;&lt;/a&gt;
-&lt;a class="jiathis_button_evernote"&gt;&lt;/a&gt;
-&lt;a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"&gt;&lt;/a&gt;
-&lt;a class="jiathis_counter_style"&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"&gt;&lt;/script&gt;
-&lt;!-- JiaThis Button END --&gt;
-</code>
-<code>html comment
-&lt;!-- UY BEGIN --&gt;
-&lt;div id="uyan_frame"&gt;&lt;/div&gt;
-&lt;script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1880878"&gt;&lt;/script&gt;
-&lt;!-- UY END --&gt;
-</code>
-修改
-<code>source\_includes/post/sharing.html</code>
-，增加:
-```html</p>
-
-<pre><code>{ % if site.weibo_share % }
-  { % include post/weibo.html % }
-{ % endif % }
-</code></pre>
-
-<p>```</p>
-
-<h2><strong>参考文献</strong></h2>
-
-<p>[1] biaobiaoqi. (2013-07-10) 定制Octopress. 来源：<br/>
-<a href="http://biaobiaoqi.me/blog/2013/07/10/decorate-octopress/">http://biaobiaoqi.me/blog/2013/07/10/decorate-octopress/</a><br>
-[2] 戴方勤. (2013-04-02) 我的Octopress配置. 来源：<br/>
-<a href="http://www.yanjiuyanjiu.com/blog/20130402/">http://www.yanjiuyanjiu.com/blog/20130402/</a><br>
-[3] Kevin Lynx.（2012-07-18）为octopress添加tag Cloud. 来源：  <br/>
-<a href="http://codemacro.com/2012/07/18/add-tag-to-octopress/">http://codemacro.com/2012/07/18/add-tag-to-octopress/</a>   <br/>
-[4] Kevin Lynx.（2012-07-18）为octopress添加分类(category)列表. 来源： <br/>
-<a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">http://codemacro.com/2012/07/18/add-category-list-to-octopress/</a>   <br/>
-[5] 唐巧. （2012-02-10）象写程序一样写博客：搭建基于github的博客. 来源:  <br/>
-<a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/">http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[用Octopress搭建Github博客小结-安装]]></title>
-    <link href="http://rachelwxm.github.io/blog/2013/12/25/yong-octopressda-jian-githubbo-ke-xiao-jie-1/"/>
-    <updated>2013-12-25T17:43:25+08:00</updated>
-    <id>http://rachelwxm.github.io/blog/2013/12/25/yong-octopressda-jian-githubbo-ke-xiao-jie-1</id>
-    <content type="html"><![CDATA[<p>网上已经很多从零安装的教程，我主要参照了两篇中文博文：唐巧的《<a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/">象写程序一样写博客：搭建基于github的博客</a>》和荒野无灯的《<a href="http://ihacklog.com/post/how-to-setup-an-octopress-blog-on-github.html">用Octopress搭建基于github的博客</a>》。在这里我就简要的把安装步骤写一下，详细信息还可以参照<a href="http://octopress.org/">octpress</a>的官方网站。</p>
-
-<!--more-->
-
-
-<p></p>
-
-<h3>1. 安装rvm和ruby</h3>
-
-<p>```sh</p>
-
-<pre><code>bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)   
-</code></pre>
-
-<p>rvm install 1.9.3<br/>
-rvm use 1.9.3<br/>
-rvm rubygems latest<br/>
-```</p>
-
-<h3>2. 下载octopress</h3>
-
-<p><code>sh
-git clone git://github.com/imathis/octopress.git octopress  
-cd octopress  
-</code></p>
-
-<h3>3. 安装依赖</h3>
-
-<p><code>sh
-sudo gem install bundler  
-rbenv rehash  
-bundle install
-</code></p>
-
-<h3>4. 安装octopress</h3>
-
-<p><code>sh
-rake install  ##注意：这步操作会重新安装octopress主题，覆盖之前的内容！
-</code></p>
-
-<h3>5. 创建github账号</h3>
-
-<p>在github账户中创建一个新的库（repositories）username.github.com，username要和账号名称一致。如果之前已经申请过了，我建议先备份文档然后清空重新申请，否则会经常报错（octopress将要上传的内容会覆盖原有内容，所以github每次都会提示）。</p>
-
-<h3>6. 创建ostopress和github的链接 <br></h3>
-
-<p><code>sh
-rake setup_github_pages
-</code>
-这一步会提示输入github账号，按照提示内容输入即可，格式如git@github.com:yourusername/yourusername.github.com。<br/>
-现在博客就已经基本搭建好了，可以通过以下命令测试一下：
-<code>sh
-rake generate
-rake preview
-</code>
-在浏览器上访问
-<code>localhost:400</code>
-，如果出现了博客界面说明上述内容都已经成功执行了。</p>
-
-<h2><strong>参考文献</strong></h2>
-
-<p>[1] 唐巧. （2012-02-10）象写程序一样写博客：搭建基于github的博客. 来源:<br/>
-<a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/">http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/</a> <br>
-[2] 荒野无灯. (2012-04-13) 用Octopress搭建基于github的博客. 来源: <br/>
-<a href="http://ihacklog.com/post/how-to-setup-an-octopress-blog-on-github.html">http://ihacklog.com/post/how-to-setup-an-octopress-blog-on-github.html</a>  <br></p>
+问题解决。
+参考：
+<a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress</a>
+原文地址：<a href="http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/">http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/</a></p>
 ]]></content>
   </entry>
   
