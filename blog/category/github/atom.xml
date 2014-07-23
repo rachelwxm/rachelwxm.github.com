@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github | Blog{Rachel|BENM}]]></title>
   <link href="http://rachelwxm.github.io/blog/category/github/atom.xml" rel="self"/>
   <link href="http://rachelwxm.github.io/"/>
-  <updated>2014-07-16T23:19:25+08:00</updated>
+  <updated>2014-07-23T10:46:01+08:00</updated>
   <id>http://rachelwxm.github.io/</id>
   <author>
     <name><![CDATA[Wu Xiaomeng(Rachel)]]></name>
@@ -37,9 +37,9 @@ git pull origin master
 cd ..
 rake deploy
 </code>
-问题解决。
+问题解决。<br/>
 参考：
-<a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress</a>
+<a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress</a> <br/>
 原文地址：<a href="http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/">http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/</a></p>
 ]]></content>
   </entry>
