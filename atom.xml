@@ -4,7 +4,7 @@
   <title><![CDATA[Blog{Rachel|BENM}]]></title>
   <link href="http://rachelwxm.github.io/atom.xml" rel="self"/>
   <link href="http://rachelwxm.github.io/"/>
-  <updated>2014-07-23T10:49:52+08:00</updated>
+  <updated>2014-07-23T10:52:17+08:00</updated>
   <id>http://rachelwxm.github.io/</id>
   <author>
     <name><![CDATA[Wu Xiaomeng(Rachel)]]></name>
@@ -46,9 +46,10 @@
 
 
 <p>问题解决。<br/>
-参考：
+参考：<br/>
 <a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress</a> <br/>
-原文地址：<a href="http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/">http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/</a></p>
+原文地址：<br/>
+<a href="http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/">http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/</a></p>
 ]]></content>
   </entry>
   
@@ -2336,7 +2337,7 @@ I am <strong>blod</strong></p>
 
 
 <p><a href="http://example.com/">http://example.com/</a> <br/>
-<a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x61;&#x64;&#x64;&#x72;&#101;&#x73;&#115;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#99;&#x6f;&#x6d;">&#x61;&#x64;&#x64;&#x72;&#x65;&#x73;&#x73;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#109;</a></code><br/>
+<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#x61;&#100;&#100;&#114;&#101;&#x73;&#x73;&#64;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;">&#97;&#x64;&#100;&#x72;&#101;&#115;&#115;&#x40;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;</a></code><br/>
 4. 引用图片<br/>
 引用图片与1.中的方式相似，只是在文字前加上感叹号“！”。</p>
 
