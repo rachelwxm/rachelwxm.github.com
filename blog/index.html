@@ -117,31 +117,12 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>! [rejected]        master -&gt; master (non-fast-forward)</span></code></pre></td></tr></table></div></figure>
 
 
-<p>在网络google了半下午，终于找到了解决方案：
-更换目录，并更新：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd octopress/_deploy
-</span><span class='line'>git pull origin master</span></code></pre></td></tr></table></div></figure>
-
-
-<p><font color="#FF0000">如果想要强制推送本地代码,可以执行<code>git push -f</code>。</font> &mdash;by Rahel    <br/>
-跳出目录，重新deploy：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ..
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>问题解决。<br/>
-参考：<br/>
-<a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress</a> <br/>
-原文地址：<br/>
-<a href="http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/">http://www.conxz.net/blog/2014/04/12/non-fast-forward-error-with-octopress/</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/16/deployshi-non-fast-forward-bao-cuo/">Read on &rarr;</a>
+    </footer>
   
 
 

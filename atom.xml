@@ -4,7 +4,7 @@
   <title><![CDATA[Blog{Rachel|BENM}]]></title>
   <link href="http://rachelwxm.github.io/atom.xml" rel="self"/>
   <link href="http://rachelwxm.github.io/"/>
-  <updated>2014-07-23T10:52:17+08:00</updated>
+  <updated>2014-07-23T10:53:24+08:00</updated>
   <id>http://rachelwxm.github.io/</id>
   <author>
     <name><![CDATA[Wu Xiaomeng(Rachel)]]></name>
@@ -25,6 +25,9 @@
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>! [rejected]        master -&gt; master (non-fast-forward)</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
 
 
 <p>在网络google了半下午，终于找到了解决方案：
@@ -2337,7 +2340,7 @@ I am <strong>blod</strong></p>
 
 
 <p><a href="http://example.com/">http://example.com/</a> <br/>
-<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#x61;&#100;&#100;&#114;&#101;&#x73;&#x73;&#64;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;">&#97;&#x64;&#100;&#x72;&#101;&#115;&#115;&#x40;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;</a></code><br/>
+<a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#x61;&#100;&#x64;&#x72;&#x65;&#115;&#115;&#x40;&#x65;&#120;&#97;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x61;&#x64;&#100;&#114;&#x65;&#x73;&#x73;&#64;&#101;&#x78;&#97;&#109;&#112;&#108;&#x65;&#46;&#x63;&#x6f;&#109;</a></code><br/>
 4. 引用图片<br/>
 引用图片与1.中的方式相似，只是在文字前加上感叹号“！”。</p>
 
