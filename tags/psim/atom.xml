@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: PSim | Blog{Rachel|BENM}]]></title>
   <link href="http://rachelwxm.github.io/tags/psim/atom.xml" rel="self"/>
   <link href="http://rachelwxm.github.io/"/>
-  <updated>2014-07-23T10:53:24+08:00</updated>
+  <updated>2014-07-31T09:27:53+08:00</updated>
   <id>http://rachelwxm.github.io/</id>
   <author>
     <name><![CDATA[Wu Xiaomeng(Rachel)]]></name>
@@ -23,7 +23,7 @@
 <h3>简介</h3>
 
 <p><strong>名称</strong>：PSim-a pilot study sequencing simulator<br/>
-<strong>作者</strong>：Rachel Wu(rachelwu123ATgmailDOTcom)，BENM Feng(BinxiaoFengATgmailDOTcom)<br/>
+<strong>作者</strong>：Rachel Wu(rachelwu123/at/gmail/dot/com)，BENM Feng(BinxiaoFeng/at/gmail/dot/com)<br/>
 <strong>版本</strong>：1.5<br/>
 <strong>更新日期</strong>：2014-04-20 <br/>
 <strong>依存包</strong>：perl，Math-Random模块<br/>
