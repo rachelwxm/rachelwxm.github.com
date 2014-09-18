@@ -9,9 +9,7 @@
   <meta name="author" content="Wu Xiaomeng(Rachel)">
 
   
-  <meta name="description" content="[转载]Deploy时[non-fast-forward]reject问题解决方案 Github+Octopress rake deploy时[non-fast-forward]reject问题解决方案
-好久没更新blog，今天写好文deploy时发现报错： 1
-! [rejected] &hellip;">
+  <meta name="description" content="文章来源 Albertsen M, Hugenholtz P, Skarshewski A, et al. Genome sequences of rare, uncultured bacteria obtained by differential coverage binning of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +75,189 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2014/09/18/wen-xian-fen-xiang-genome-sequences-of-rare/">文献分享-metagenome Binning</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-18T12:06:07+08:00" pubdate data-updated="true">Sep 18<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>文章来源</h4>
+
+<p><a href="http://www.nature.com/nbt/journal/v31/n6/abs/nbt.2579.html">Albertsen M, Hugenholtz P, Skarshewski A, et al. Genome sequences of rare, uncultured bacteria obtained by differential coverage binning of multiple metagenomes[J]. Nature biotechnology, 2013, 31(6): 533-538.</a><br/>
+基于宏基因组覆盖度差异获得罕见的、非培养的细菌基因组序列</p>
+
+<h4>背景和意义</h4>
+
+<ul>
+<li>意义： 从非培养的宏基因组中分离出单个细菌基因组</li>
+<li>宏基因组binning方法
+
+<ul>
+<li>基于序列相似性比对</li>
+<li>基于物种分类标记物基因</li>
+<li>基于序列特征（GC）</li>
+<li>基于关联性特征，结合机器学习</li>
+</ul>
+</li>
+<li>局限性
+
+<ul>
+<li>数据库中缺乏相应的序列</li>
+<li>不是所有的宏基因组 DNA 都包含标记物基因，标记物基因种间水平转移</li>
+<li>序列短，序列覆盖度低</li>
+<li>计算功能、算法要求高</li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/18/wen-xian-fen-xiang-genome-sequences-of-rare/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2014/09/12/yong-perlhua-svgtu/">用perl画SVG图</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-12T17:33:54+08:00" pubdate data-updated="true">Sep 12<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本文翻译自perl的<a href="http://search.cpan.org/~ronan/SVG-2.28/SVG/Manual.pm#___top" target="_blank">SVG模块内容</a></p>
+
+<p>===========</p>
+
+<h4>名称</h4>
+
+<p>SVG &ndash; Perl extension for generating Scalable Vector Graphics (SVG) documents</p>
+
+<h4>版本</h4>
+
+<p>2.24<br/>
+&lt;&mdash;!more&mdash;></p>
+
+<h4>描述</h4>
+
+<h4>梗概</h4>
+
+<pre><code>#!/usr/bin/perl -w
+use strict;
+use SVG;
+
+# 创建一个新的SVG图形，并设置画布大小
+my $svg= SVG-&gt;new(width=&gt;200,height=&gt;200);
+
+#创建一个group
+my $y=$svg-&gt;group(
+    id    =&gt; 'group_y',
+    style =&gt; { stroke=&gt;'red', fill=&gt;'green' }
+);
+
+#在这个分组中添加一个圆形
+$y-&gt;circle(cx=&gt;100, cy=&gt;100, r=&gt;50, id=&gt;'circle_in_group_y');
+
+#或者使用'tag'的方式创建一个group
+my $z=$svg-&gt;tag('g',
+    id    =&gt; 'group_z',
+    style =&gt; {
+        stroke =&gt; 'rgb(100,200,50)',
+        fill   =&gt; 'rgb(10,100,150)'
+    }
+);
+
+#用'tag'方式创建一个名为circle的元素，其内容为一个圆形
+$z-&gt;tag('circle', cx=&gt;50, cy=&gt;50, r=&gt;100, id=&gt;'circle_in_group_z');
+
+#创建一个链接，原链接符是一个矩形，其他参数使用group z的设定
+my $k = $z-&gt;anchor(
+    id      =&gt; 'anchor_k',
+    -href   =&gt; 'http://test.hackmare.com/',
+    -target =&gt; 'new_window_0'
+    )-&gt;rectangle(
+        x     =&gt; 20, y      =&gt; 50,
+        width =&gt; 20, height =&gt; 30,
+        rx    =&gt; 10, ry     =&gt; 5,
+        id    =&gt; 'rect_k_in_anchor_k_in_group_z'
+    );
+
+#打印SVG图
+print $svg-&gt;xmlify;
+
+# or render a child node of the SVG object without rendering the entire object
+print $k-&gt;xmlify; #renders the anchor $k above containing a rectangle, but does not
+#render any of the ancestor nodes of $k
+
+
+# or, explicitly use svg namespace and generate a document with its own DTD
+print $svg-&gt;xmlify(-namespace=&gt;'svg');
+
+# or, explicitly use svg namespace and generate an in-line docunent
+print $svg-&gt;xmlify(
+    -namespace =&gt; "svg",
+    -pubid =&gt; "-//W3C//DTD SVG 1.0//EN",
+    -inline   =&gt; 1
+);
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -163,7 +344,7 @@
 <h3>简介</h3>
 
 <p><strong>名称</strong>：PSim-a pilot study sequencing simulator<br/>
-<strong>作者</strong>：Rachel Wu(rachelwu123/at/gmail/dot/com)，BENM Feng(BinxiaoFeng/at/gmail/dot/com)<br/>
+<strong>作者</strong>：Rachel Wu(rachelwu123&lt;at>gmail&lt;dot>com)，BENM Feng(BinxiaoFeng&lt;at>gmail&lt;dot>com)<br/>
 <strong>版本</strong>：1.5<br/>
 <strong>更新日期</strong>：2014-04-20 <br/>
 <strong>依存包</strong>：perl，Math-Random模块<br/>
@@ -500,107 +681,6 @@ PSim是一个用来模拟NGS测序数据的实验软件包，用perl语言编写
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2014/01/17/r-datatype/">R的数据类型-1</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-17T00:35:54+08:00" pubdate data-updated="true">Jan 17<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5><em>Computing for Data Analysis, week1-Data Types</em></h5>
-
-<h3>元素(objects)</h3>
-
-<p>R有五种数据类型：</p>
-
-<ul>
-<li>character</li>
-<li>numeric(real numbers)</li>
-<li>inetger</li>
-<li>complex</li>
-<li>logical(True/False)</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/17/r-datatype/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2014/01/16/r-computing-for-data-analysis/">R简介</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-16T19:00:26+08:00" pubdate data-updated="true">Jan 16<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5><em>Computing for Data Analysis, week1-What Makes R Different</em></h5>
-
-<blockquote><p>R语言是一种自由软件编程语言与操作环境，主要用于统计分析、绘图、数据挖掘。R本来是由来自新西兰奥克兰大学的Ross Ihaka和Robert Gentleman开发（也因此称为R）。R是基于S语言的一个GNU计划项目，所以也可以当作S语言的一种实现。<sup>[1]</sup></p></blockquote>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/16/r-computing-for-data-analysis/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -616,6 +696,14 @@ PSim是一个用来模拟NGS测序数据的实验软件包，用perl语言编写
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/18/wen-xian-fen-xiang-genome-sequences-of-rare/">文献分享-metagenome Binning</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/12/yong-perlhua-svgtu/">用perl画SVG图</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/16/deployshi-non-fast-forward-bao-cuo/">Deploy时[non-fast-forward]报错</a>
       </li>
     
@@ -625,14 +713,6 @@ PSim是一个用来模拟NGS测序数据的实验软件包，用perl语言编写
     
       <li class="post">
         <a href="/blog/2014/04/17/podxie-fa/">Pod写法</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/14/r-han-shu/">R-函数</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/13/rde-kong-zhi-jie-gou/">R的控制结构</a>
       </li>
     
   </ul>
@@ -679,7 +759,11 @@ PSim是一个用来模拟NGS测序数据的实验软件包，用perl语言编写
 <li class='category'><a href='/blog/category/octopress/'>octopress (3)</a></li>
 <li class='category'><a href='/blog/category/octopress-/'>octopress, (1)</a></li>
 <li class='category'><a href='/blog/category/perl/'>perl (1)</a></li>
+<li class='category'><a href='/blog/category/perl-/'>perl, (1)</a></li>
 <li class='category'><a href='/blog/category/pod/'>pod (1)</a></li>
+<li class='category'><a href='/blog/category/svg-/'>svg, (1)</a></li>
+<li class='category'><a href='/blog/category/文献分享-metagenome-binning/'>文献分享,metagenome,binning (1)</a></li>
+<li class='category'><a href='/blog/category/画图/'>画图 (1)</a></li>
  
 </ul>
 </section>

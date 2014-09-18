@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: perl | Blog{Rachel|BENM}]]></title>
+  <title><![CDATA[Tag: perl, | Blog{Rachel|BENM}]]></title>
   <link href="http://rachelwxm.github.io/tags/perl/atom.xml" rel="self"/>
   <link href="http://rachelwxm.github.io/"/>
-  <updated>2014-08-06T09:36:51+08:00</updated>
+  <updated>2014-09-18T15:01:18+08:00</updated>
   <id>http://rachelwxm.github.io/</id>
   <author>
     <name><![CDATA[Wu Xiaomeng(Rachel)]]></name>
@@ -14,189 +14,85 @@
 
   
   <entry>
-    <title type="html"><![CDATA[pod写法]]></title>
-    <link href="http://rachelwxm.github.io/blog/2014/04/17/podxie-fa/"/>
-    <updated>2014-04-17T19:05:28+08:00</updated>
-    <id>http://rachelwxm.github.io/blog/2014/04/17/podxie-fa</id>
-    <content type="html"><![CDATA[<h3>pod简介</h3>
+    <title type="html"><![CDATA[用perl画SVG图]]></title>
+    <link href="http://rachelwxm.github.io/blog/2014/09/12/yong-perlhua-svgtu/"/>
+    <updated>2014-09-12T17:33:54+08:00</updated>
+    <id>http://rachelwxm.github.io/blog/2014/09/12/yong-perlhua-svgtu</id>
+    <content type="html"><![CDATA[<p>本文翻译自perl的<a href="http://search.cpan.org/~ronan/SVG-2.28/SVG/Manual.pm#___top" target="_blank">SVG模块内容</a></p>
 
-<p>pod是plain old documentaton的缩写，它可以独立存在或者与代码混合在一起形成嵌入的文档。pod简单易写，有足够的标记格式。pod解决了程序员写程序和写文档并行工作问题，并且它可以转换成多种打印格式。</p>
+<p>===========</p>
 
-<!--more-->
+<h4>名称</h4>
 
+<p>SVG &ndash; Perl extension for generating Scalable Vector Graphics (SVG) documents</p>
 
-<p>pod文档起始标志：<code>=pod</code>，也可以在perl代码中任何位置以一个等号和一个标示符开头，比如</p>
+<h4>版本</h4>
 
-<pre><code>=head1 Here There Be Pods!
-</code></pre>
+<p>2.24<br/>
+&lt;&mdash;!more&mdash;></p>
 
-<p>pod结束标志：<code>=cut</code>，从pod起始标志到结束标志之间所有文本都会被忽略。这个标志一定不能忘记写，否则整篇代码都会被认为是注释信息。</p>
+<h4>描述</h4>
 
-<h3>各级标题</h3>
+<h4>梗概</h4>
 
-<p>以下标示符后面的文字分别以一、二、三、四级标记显示：</p>
+<pre><code>#!/usr/bin/perl -w
+use strict;
+use SVG;
 
-<pre><code>=head1  
-=head2  
-=head3  
-=head4  
-</code></pre>
+# 创建一个新的SVG图形，并设置画布大小
+my $svg= SVG-&gt;new(width=&gt;200,height=&gt;200);
 
-<h3>文本格式</h3>
+#创建一个group
+my $y=$svg-&gt;group(
+    id    =&gt; 'group_y',
+    style =&gt; { stroke=&gt;'red', fill=&gt;'green' }
+);
 
-<ul>
-<li><code>I&lt;text&gt;</code> 斜体</li>
-<li><code>B&lt;text&gt;</code> 黑体</li>
-<li><code>C&lt;code&gt;</code> 代码块</li>
-<li><code>L&lt;text|name&gt;</code> 超链接（个人觉得这个用处不是很大，有需要的可以自行查阅文章后面的参考资料）</li>
-<li><code>E&lt;escape&gt;</code> 转义字符
+#在这个分组中添加一个圆形
+$y-&gt;circle(cx=&gt;100, cy=&gt;100, r=&gt;50, id=&gt;'circle_in_group_y');
 
-<ul>
-<li><code>E&lt;lt&gt;</code>     &lt;</li>
-<li><code>E&lt;gt&gt;</code>     ></li>
-<li><code>E&lt;sol&gt;</code>    /</li>
-<li><code>E&lt;verbar&gt;</code> |</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>列表</h3>
-
-<p>列表表示形式如下：</p>
-
-<pre><code>=over NUMBER
-=item SYBOL
-=back
-</code></pre>
-
-<p><code>=over</code>标示列表段落的开始，“NUMBER”标示缩进数目，也可以不写。<code>=item</code>后面写列表形式，可选择的有：</p>
-
-<ul>
-<li>项目列表：*</li>
-<li>序号列表：数字1、2、3&hellip;&hellip;</li>
-<li>命名列表：以字符串命名</li>
-</ul>
-
-
-<p>例如：</p>
-
-<pre><code>=item *
-=item 1
-=item foo
-</code></pre>
-
-<p>具体使用方法请看文章最后的例子。需要注意的是：<code>=over</code>、<code>=item</code>、<code>=back</code>三者要一起使用，<code>=over</code>和<code>=back</code>中间至少要有一个<code>=item</code>，而且要保持列表item（项）的一致性。</p>
-
-<h3>代码块</h3>
-
-<p>字面段落以空格或者水平制表符字符开头，翻译器会定义该段文字是代码，以等宽字体显示。并且假定水平制表符为八个空格宽。在代码块种不能使用斜体或粗体。</p>
-
-<h3>插入其他编程语言</h3>
-
-<p>格式为：</p>
-
-<pre><code>=for TRANSLATOR
-
-=begin TRANSLATOR
-=end TRANSLATOR
-</code></pre>
-
-<p><code>=for</code>和后两者组合的作用相同，都是对此段落使用特殊的格式（如html、text），只有使用这种格式转换的时候才会读取，比如设定格式为html，那么pod2text就会忽略<code>=begin html</code>和<code>=end html</code>之间的内容。
-区别在于<code>=for</code>只作用于本段落余下的部分，而<code>=begin</code>和<code>=end</code>可以处理中间包含的多个段落。<br/>
-可以接受的格式有：roff，man，troff，nroff，tbl，eqn，latex，tex，html和text。</p>
-
-<h3>EXAMPLE</h3>
-
-<p>用<code>pod2html</code>转化后的<a href="http://rachelwxm.github.io/pod-test.html" target="_blank">效果</a>。</p>
-
-<pre><code>=pod
-
-=head1 Pod Format
-
-=head2 Font format
-
-in the next, I'll try font format. 
-
-I&lt;italics&gt;
-
-B&lt;bold&gt;
-
-C&lt;code&gt;
-
-E&lt;lt&gt;bE&lt;gt&gt; etc.
-
-
-=head2 List 
-
-=head3 Bullet
-
-=over 4
-
-=item *
-Mithril armor
-
-=item *
-oELven cloak  
-
-=back
-
-=head3 Number List
-
-=over 4
-
-=item 1
-Mithril armor
-
-=item 2
-oELven cloak  
-
-=back
-
-=head3 Name List
-
-=over
-
-=item foo
-FOOwhat
-
-=item bar
-BARwhat
-
-=back
-
-=head2 Code Block
-
-  if($Strand eq "+")
-  {
-    foreach(@se)
-    {
-        my ($start,$end)=split /\,/;
-        $transcript.=substr($SEQUENCE,$start,($end-$start+1));
+#或者使用'tag'的方式创建一个group
+my $z=$svg-&gt;tag('g',
+    id    =&gt; 'group_z',
+    style =&gt; {
+        stroke =&gt; 'rgb(100,200,50)',
+        fill   =&gt; 'rgb(10,100,150)'
     }
-  }
+);
+
+#用'tag'方式创建一个名为circle的元素，其内容为一个圆形
+$z-&gt;tag('circle', cx=&gt;50, cy=&gt;50, r=&gt;100, id=&gt;'circle_in_group_z');
+
+#创建一个链接，原链接符是一个矩形，其他参数使用group z的设定
+my $k = $z-&gt;anchor(
+    id      =&gt; 'anchor_k',
+    -href   =&gt; 'http://test.hackmare.com/',
+    -target =&gt; 'new_window_0'
+    )-&gt;rectangle(
+        x     =&gt; 20, y      =&gt; 50,
+        width =&gt; 20, height =&gt; 30,
+        rx    =&gt; 10, ry     =&gt; 5,
+        id    =&gt; 'rect_k_in_anchor_k_in_group_z'
+    );
+
+#打印SVG图
+print $svg-&gt;xmlify;
+
+# or render a child node of the SVG object without rendering the entire object
+print $k-&gt;xmlify; #renders the anchor $k above containing a rectangle, but does not
+#render any of the ancestor nodes of $k
 
 
-=head2 Translator
+# or, explicitly use svg namespace and generate a document with its own DTD
+print $svg-&gt;xmlify(-namespace=&gt;'svg');
 
-=head3 html
-
-=begin html
-
-&lt;br&gt;Figure 1.&lt;IMG SRC="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRkoUhnTy_gEx-sFVAVBZhyukmAU1mqdRlZu3ndDoa1Zhp-5d28"&gt;&lt;Br&gt;
-
-=end html
-
-
-=cut
+# or, explicitly use svg namespace and generate an in-line docunent
+print $svg-&gt;xmlify(
+    -namespace =&gt; "svg",
+    -pubid =&gt; "-//W3C//DTD SVG 1.0//EN",
+    -inline   =&gt; 1
+);
 </code></pre>
-
-<h2><strong>参考资料</strong></h2>
-
-<p>[1]fayland.(2005-01-14)怎么写POD  <br/>
-<a href="http://www.fayland.org/journal/POD.html">http://www.fayland.org/journal/POD.html</a>  <br/>
-[2]perl语言编程(大骆驼). p682-p693<br/>
-[3]<a href="http://zh.wikipedia.org/zh-cn/POD_(%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)" target="_blank">POD (程序设计) &ndash; 维基百科</a></p>
 ]]></content>
   </entry>
   

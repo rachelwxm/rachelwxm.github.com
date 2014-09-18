@@ -4,7 +4,7 @@
   <title><![CDATA[Blog{Rachel|BENM}]]></title>
   <link href="http://rachelwxm.github.io/atom.xml" rel="self"/>
   <link href="http://rachelwxm.github.io/"/>
-  <updated>2014-08-06T09:36:51+08:00</updated>
+  <updated>2014-09-18T15:01:18+08:00</updated>
   <id>http://rachelwxm.github.io/</id>
   <author>
     <name><![CDATA[Wu Xiaomeng(Rachel)]]></name>
@@ -12,6 +12,267 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[文献分享-metagenome binning]]></title>
+    <link href="http://rachelwxm.github.io/blog/2014/09/18/wen-xian-fen-xiang-genome-sequences-of-rare/"/>
+    <updated>2014-09-18T12:06:07+08:00</updated>
+    <id>http://rachelwxm.github.io/blog/2014/09/18/wen-xian-fen-xiang-genome-sequences-of-rare</id>
+    <content type="html"><![CDATA[<h4>文章来源</h4>
+
+<p><a href="http://www.nature.com/nbt/journal/v31/n6/abs/nbt.2579.html">Albertsen M, Hugenholtz P, Skarshewski A, et al. Genome sequences of rare, uncultured bacteria obtained by differential coverage binning of multiple metagenomes[J]. Nature biotechnology, 2013, 31(6): 533-538.</a><br/>
+基于宏基因组覆盖度差异获得罕见的、非培养的细菌基因组序列</p>
+
+<h4>背景和意义</h4>
+
+<ul>
+<li>意义： 从非培养的宏基因组中分离出单个细菌基因组</li>
+<li>宏基因组binning方法
+
+<ul>
+<li>基于序列相似性比对</li>
+<li>基于物种分类标记物基因</li>
+<li>基于序列特征（GC）</li>
+<li>基于关联性特征，结合机器学习</li>
+</ul>
+</li>
+<li>局限性
+
+<ul>
+<li>数据库中缺乏相应的序列</li>
+<li>不是所有的宏基因组 DNA 都包含标记物基因，标记物基因种间水平转移</li>
+<li>序列短，序列覆盖度低</li>
+<li>计算功能、算法要求高</li>
+</ul>
+</li>
+</ul>
+
+
+<!--more-->
+
+
+<p></p>
+
+<h4>样品来源</h4>
+
+<p>丹麦某污水处理厂的活性污泥反应器（activated sludge bioreactor）</p>
+
+<h4>数据来源</h4>
+
+<p>两种不同的DNA提取方法：</p>
+
+<ul>
+<li>热酚处理（HP+：29G）-破坏细菌细胞壁，降低部分菌株的含量</li>
+<li>非热酚处理（HP-：57G）</li>
+</ul>
+
+
+<h4>研究方法</h4>
+
+<p>[fig1_flow<em>]
+<img alt='Fig 1. Overview of the pipeline to obtain high-quality population genomes from multiple deep metagenomes using differential coverage as the primary binning method, illustrated using the population genome TM7-AAU-ii.'  src='http://rachelwxm.github.io/images/POST/MetaBin/meta_bin_flow.png'><br/>
+Step1：采样（包含多种微生物）；<br/>
+Step2：使用两种方法提取宏基因组DNA，这两种方式会导致不同物种DNA在宏基因组DNA中相对丰度的差异；<br/>
+Step3：使用Hiseq2000测序平台，PE150策略进行测序；<br/>
+Step4：对原始的测序数据（Raw Data）进行质控、</em>de novo_组装，因为HP+处理后的样本测序量低而且测出来的reads有物种偏向性，最后只用了HP-处理的数据组装的scaffold做后续分析；</p>
+
+<blockquote><p>However, because fewer reads were sequenced and there was a skewed spe- cies abundance toward few organisms in the HP+ metagenome, only the HP− metagenome scaffolds were used for extraction of full genomes</p></blockquote>
+
+<p>Step5：Hp+和HP-的reads与scaffold比对（mapping），计算每个scaffold在两种处理下的相对丰度；<br/>
+Step6：对每个分理处的bin进行基于四核苷酸频率的PCA分析；<br/>
+Step7：统计每个scaffold的GC含量；<br/>
+Step8：标记基因鉴定：用HMMER3软件预测scaffold的ORF区域，再与RefSeq数据库比对注释；</p>
+
+<p>Step9：将scaffold按照它们在两种处理中的相对丰度聚类（binning），如图2所示，图中横坐标是各scaffold在HP-处理中的相对丰度，纵坐标是在HP+处理中的相对丰度；聚类原理是：当在菌株级别对样品做处理时，来自同一个物种的DNA会整体表现降低，相对的没有受到热酚影响的物种的DNA丰度会整体表现提高；<br/>
+<img alt='Fig 2. Sequence composition–independent binning of metagenome scaffolds from the lab-scale bioreactor using differential coverage (HP+, HP−).' src='http://rachelwxm.github.io/images/POST/MetaBin/composition–independent binning.png'><br/>
+Step10：利用PE reads将已分类的bin中的序列与多拷贝区域连接起来，再用Cytoscape软件画出连接图；<br/>
+Step11：将所有mapping到一个bin的reads重新组装；<br/>
+Step12：评估组装出“单菌”的基因组DNA完整性，用Circle画圈图。</p>
+
+<h4>研究结果</h4>
+
+<p>从宏基因组测序结果中组装出序列量小并且无参的基因组，组装得到31个细菌基因组（包括相对低丰度&lt;1%的），其中12个已经或接近得到完整基因组信息，12个中的4个属于TM7门。</p>
+
+<h4>分析工具</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> 模块  </th>
+<th> 工具 </th>
+<th>  参数  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>sequencing</td>
+<td> HiSeq2000</td>
+<td> PE150|</td>
+</tr>
+<tr>
+<td></td>
+<td>trimming   CLC Genomics </td>
+<td>Workbench </td>
+<td>MinQ=20,MinLen=50,adapter, no ambiguous nucleotides|</td>
+</tr>
+<tr>
+<td></td>
+<td>assembly   </td>
+<td>CLC Genomics Workbench</td>
+<td>    k-mer=63|</td>
+</tr>
+<tr>
+<td></td>
+<td>mapping</td>
+<td>   CLC Genomics Workbench  </td>
+<td>相似度>95%，覆盖度=100%|</td>
+</tr>
+<tr>
+<td></td>
+<td>PCA    </td>
+<td>R  </td>
+<td> |</td>
+</tr>
+<tr>
+<td></td>
+<td>ORF predict</td>
+<td>   HMMER3  -cut_tc</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>align  </td>
+<td>blastp，MEGAN </td>
+<td>RefSeq protein database</td>
+</tr>
+<tr>
+<td></td>
+<td>plot   R   </td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>visualization  </td>
+<td>Cytoscape  </td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Re-assembly    </td>
+<td>CLC &amp; Velvet   </td>
+<td>k-mer=99</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>CLC Genomics Workbench</h4>
+
+<p>由丹麦生物信息学软件公司CLC Bio（QIAGEN收购）开发<br/>
+功能：分析各代测序数据—质控、组装、mapping、变异检测、注释、比较基因组学分析、图形化展示、差异表达分析、RNA二级结构预测、引物和探针设计、系统进化分析……<br/>
+优点：图形化界面，多系统支持，自有算法，功能整合<br/>
+缺点：贵</p>
+
+<h4>其他binning工具</h4>
+
+<p>TETRA：四核苷酸多态性的统计聚类<br/>
+Phylopythia：基于支持向量机，通过已知序列的信息来判断宏基因组中某片段归为哪一类<br/>
+SOrt-ITEMS：基于序列比对，鉴定分类地位，直系同源聚类<br/>
+INDUS &amp; TWARIT：基于寡核苷酸的组成</p>
+
+<h4>参考资料</h4>
+
+<p>[1]<a href="http://blog.sina.com.cn/s/blog_670445240101lght.html">每日一生信—宏基因组聚类（binning\classification）</a><br/>
+[2] Mande, Sharmila S.; Monzoorul Haque Mohammed; Tarini Shankar Ghosh (2012). &ldquo;Classification of metagenomic sequences: methods and challenges.&rdquo;. Briefings in Bioinformatics 13 (6): 669–81.<br/>
+[3]<a href="http://omictools.com/binning-shotgun-reads-c191-p1.html">OMIStools</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用perl画SVG图]]></title>
+    <link href="http://rachelwxm.github.io/blog/2014/09/12/yong-perlhua-svgtu/"/>
+    <updated>2014-09-12T17:33:54+08:00</updated>
+    <id>http://rachelwxm.github.io/blog/2014/09/12/yong-perlhua-svgtu</id>
+    <content type="html"><![CDATA[<p>本文翻译自perl的<a href="http://search.cpan.org/~ronan/SVG-2.28/SVG/Manual.pm#___top" target="_blank">SVG模块内容</a></p>
+
+<p>===========</p>
+
+<h4>名称</h4>
+
+<p>SVG &ndash; Perl extension for generating Scalable Vector Graphics (SVG) documents</p>
+
+<h4>版本</h4>
+
+<p>2.24<br/>
+&lt;&mdash;!more&mdash;></p>
+
+<h4>描述</h4>
+
+<h4>梗概</h4>
+
+<pre><code>#!/usr/bin/perl -w
+use strict;
+use SVG;
+
+# 创建一个新的SVG图形，并设置画布大小
+my $svg= SVG-&gt;new(width=&gt;200,height=&gt;200);
+
+#创建一个group
+my $y=$svg-&gt;group(
+    id    =&gt; 'group_y',
+    style =&gt; { stroke=&gt;'red', fill=&gt;'green' }
+);
+
+#在这个分组中添加一个圆形
+$y-&gt;circle(cx=&gt;100, cy=&gt;100, r=&gt;50, id=&gt;'circle_in_group_y');
+
+#或者使用'tag'的方式创建一个group
+my $z=$svg-&gt;tag('g',
+    id    =&gt; 'group_z',
+    style =&gt; {
+        stroke =&gt; 'rgb(100,200,50)',
+        fill   =&gt; 'rgb(10,100,150)'
+    }
+);
+
+#用'tag'方式创建一个名为circle的元素，其内容为一个圆形
+$z-&gt;tag('circle', cx=&gt;50, cy=&gt;50, r=&gt;100, id=&gt;'circle_in_group_z');
+
+#创建一个链接，原链接符是一个矩形，其他参数使用group z的设定
+my $k = $z-&gt;anchor(
+    id      =&gt; 'anchor_k',
+    -href   =&gt; 'http://test.hackmare.com/',
+    -target =&gt; 'new_window_0'
+    )-&gt;rectangle(
+        x     =&gt; 20, y      =&gt; 50,
+        width =&gt; 20, height =&gt; 30,
+        rx    =&gt; 10, ry     =&gt; 5,
+        id    =&gt; 'rect_k_in_anchor_k_in_group_z'
+    );
+
+#打印SVG图
+print $svg-&gt;xmlify;
+
+# or render a child node of the SVG object without rendering the entire object
+print $k-&gt;xmlify; #renders the anchor $k above containing a rectangle, but does not
+#render any of the ancestor nodes of $k
+
+
+# or, explicitly use svg namespace and generate a document with its own DTD
+print $svg-&gt;xmlify(-namespace=&gt;'svg');
+
+# or, explicitly use svg namespace and generate an in-line docunent
+print $svg-&gt;xmlify(
+    -namespace =&gt; "svg",
+    -pubid =&gt; "-//W3C//DTD SVG 1.0//EN",
+    -inline   =&gt; 1
+);
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[deploy时[non-fast-forward]报错]]></title>
@@ -66,7 +327,7 @@
 <h3>简介</h3>
 
 <p><strong>名称</strong>：PSim-a pilot study sequencing simulator<br/>
-<strong>作者</strong>：Rachel Wu(rachelwu123/at/gmail/dot/com)，BENM Feng(BinxiaoFeng/at/gmail/dot/com)<br/>
+<strong>作者</strong>：Rachel Wu(rachelwu123&lt;at>gmail&lt;dot>com)，BENM Feng(BinxiaoFeng&lt;at>gmail&lt;dot>com)<br/>
 <strong>版本</strong>：1.5<br/>
 <strong>更新日期</strong>：2014-04-20 <br/>
 <strong>依存包</strong>：perl，Math-Random模块<br/>
@@ -2340,7 +2601,7 @@ I am <strong>blod</strong></p>
 
 
 <p><a href="http://example.com/">http://example.com/</a> <br/>
-<a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#97;&#100;&#x64;&#x72;&#101;&#115;&#115;&#64;&#x65;&#120;&#97;&#109;&#112;&#108;&#x65;&#46;&#99;&#111;&#109;">&#x61;&#x64;&#100;&#114;&#101;&#115;&#x73;&#64;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#109;</a></code><br/>
+<a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#97;&#x64;&#x64;&#x72;&#101;&#x73;&#x73;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;">&#97;&#100;&#100;&#x72;&#x65;&#x73;&#115;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#109;</a></code><br/>
 4. 引用图片<br/>
 引用图片与1.中的方式相似，只是在文字前加上感叹号“！”。</p>
 
