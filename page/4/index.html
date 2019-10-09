@@ -337,23 +337,16 @@
   <header class="post-header">
     <h1 class="post-title">
       
-        <span class="post-pinned">
-          <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
-  width="32" height="32">
-  <path d="M682.666667 512V170.666667h42.666666V85.333333H298.666667v85.333334h42.666666v341.333333l-85.333333 85.333333v85.333334h221.866667v256h68.266666v-256H768v-85.333334l-85.333333-85.333333z"></path>
-</svg>
-
-        </span>
-      
-      <a class="post-link" href="/post/jane-theme-preview/">Jane 主题预览</a>
+      <a class="post-link" href="/post/goisforlovers/">(Hu)go Template Primer</a>
     </h1>
     
     <div class="post-meta">
-      <time datetime="2018-03-06" class="post-time">
-        2018-03-06
+      <time datetime="2014-04-02" class="post-time">
+        2014-04-02
       </time>
       <div class="post-category">
-          <a href="http://localhost:1313/categories/shortcodes/"> shortcodes </a>
+          <a href="http://localhost:1313/categories/development/"> Development </a>
+          <a href="http://localhost:1313/categories/golang/"> golang </a>
           <a href="http://localhost:1313/categories/index/"> index </a>
           
         </div>
@@ -366,10 +359,11 @@
   <div class="post-content">
     
     <div class="post-summary">
-      主题预览,内容有待填充。
+      Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
+This document is a brief primer on using go templates.
     </div>
     <div class="read-more">
-      <a href="/post/jane-theme-preview/" class="read-more-link">阅读全文</a>
+      <a href="/post/goisforlovers/" class="read-more-link">阅读全文</a>
     </div>
     
   </div>
@@ -380,16 +374,16 @@
   <header class="post-header">
     <h1 class="post-title">
       
-      <a class="post-link" href="/post/math-preview/">Math Preview</a>
+      <a class="post-link" href="/post/hugoisforlovers/">Getting Started with Hugo</a>
     </h1>
     
     <div class="post-meta">
-      <time datetime="2019-03-04" class="post-time">
-        2019-03-04
+      <time datetime="2014-04-02" class="post-time">
+        2014-04-02
       </time>
       <div class="post-category">
-          <a href="http://localhost:1313/categories/docs/"> docs </a>
-          <a href="http://localhost:1313/categories/math/"> math </a>
+          <a href="http://localhost:1313/categories/development/"> Development </a>
+          <a href="http://localhost:1313/categories/golang/"> golang </a>
           <a href="http://localhost:1313/categories/index/"> index </a>
           
         </div>
@@ -402,10 +396,15 @@
   <div class="post-content">
     
     <div class="post-summary">
-      <p><a href="https://www.intmath.com/cg5/katex-mathjax-comparison.php">KaTeX and MathJax Comparison Demo, currently processed as KaTex</a></p>
+      Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
+Save it somewhere specific as we will be using it in the next step.
+More complete instructions are available at installing hugo
+Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
+Follow the following steps:
+ Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:
     </div>
     <div class="read-more">
-      <a href="/post/math-preview/" class="read-more-link">阅读全文</a>
+      <a href="/post/hugoisforlovers/" class="read-more-link">阅读全文</a>
     </div>
     
   </div>
@@ -416,16 +415,16 @@
   <header class="post-header">
     <h1 class="post-title">
       
-      <a class="post-link" href="/post/shortcodes-preview/">Shortcodes Preview</a>
+      <a class="post-link" href="/post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a>
     </h1>
     
     <div class="post-meta">
-      <time datetime="2018-03-04" class="post-time">
-        2018-03-04
+      <time datetime="2014-03-10" class="post-time">
+        2014-03-10
       </time>
       <div class="post-category">
-          <a href="http://localhost:1313/categories/docs/"> docs </a>
-          <a href="http://localhost:1313/categories/shortcodes/"> shortcodes </a>
+          <a href="http://localhost:1313/categories/development/"> Development </a>
+          <a href="http://localhost:1313/categories/golang/"> golang </a>
           <a href="http://localhost:1313/categories/index/"> index </a>
           
         </div>
@@ -438,20 +437,12 @@
   <div class="post-content">
     
     <div class="post-summary">
-      <h2 id="what-a-shortcode-is">What a Shortcode is</h2>
-
-<p>Hugo loves Markdown because of its simple content format, but there are times when Markdown falls short. Often, content authors are forced to add raw HTML (e.g., video <code>&lt;iframes&gt;</code>) to Markdown content. We think this contradicts the beautiful simplicity of Markdown&rsquo;s syntax.</p>
-
-<p>Hugo created <strong>shortcodes</strong> to circumvent these limitations.</p>
-
-<p>A shortcode is a simple snippet inside a content file that Hugo will render using a predefined template. Note that shortcodes will not work in template files. If you need the type of drop-in functionality that shortcodes provide but in a template, you most likely want a [partial template][partials] instead.</p>
-
-<p>In addition to cleaner Markdown, shortcodes can be updated any time to reflect new classes, techniques, or standards. At the point of site generation, Hugo shortcodes will easily merge in your changes. You avoid a possibly complicated search and replace operation.</p>
-
-<p>More details: <a href="https://gohugo.io/content-management/shortcodes/">https://gohugo.io/content-management/shortcodes/</a></p>
+      Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ &lt;root&gt;/ ▾ images/ logo.png  should become
+▾ &lt;root&gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.
     </div>
     <div class="read-more">
-      <a href="/post/shortcodes-preview/" class="read-more-link">阅读全文</a>
+      <a href="/post/migrate-from-jekyll/" class="read-more-link">阅读全文</a>
     </div>
     
   </div>
@@ -483,7 +474,7 @@
   <nav class="pagination">
     <ul>
       
-      <li  class="active" >
+      <li >
         <a href="/">1</a>
       </li>
       
@@ -495,7 +486,7 @@
         <a href="/page/3/">3</a>
       </li>
       
-      <li >
+      <li  class="active" >
         <a href="/page/4/">4</a>
       </li>
       
