@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wu Xiaomeng&#39;s Blog</title>
-    <link>http://localhost:1313/</link>
+    <link>http://wuxiaomeng.cn/</link>
     <description>Recent content on Wu Xiaomeng&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 04 Mar 2019 16:01:23 +0800</lastBuildDate>
     
-        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://wuxiaomeng.cn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Posts</title>
-      <link>http://localhost:1313/post/</link>
+      <link>http://wuxiaomeng.cn/post/</link>
       <pubDate>Mon, 04 Mar 2019 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/</guid>
+      <guid>http://wuxiaomeng.cn/post/</guid>
       
         <description></description>
       
