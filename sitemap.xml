@@ -9,8 +9,57 @@
   </url>
   
   <url>
+    <loc>http://wuxiaomeng.cn/about/</loc>
+    <lastmod>2019-10-09T13:28:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://wuxiaomeng.cn/categories/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
+    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/tags/python/</loc>
+    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/categories/python/</loc>
+    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/python-speed-test/</loc>
+    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/tags/</loc>
+    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/</loc>
+    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/tags/%E5%8A%A0%E9%80%9F/</loc>
+    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -72,28 +121,14 @@
   </url>
   
   <url>
-    <loc>http://wuxiaomeng.cn/tags/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://wuxiaomeng.cn/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://wuxiaomeng.cn/tags/shortcodes/</loc>
+    <loc>http://wuxiaomeng.cn/categories/shortcodes/</loc>
     <lastmod>2018-03-07T16:01:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://wuxiaomeng.cn/categories/shortcodes/</loc>
+    <loc>http://wuxiaomeng.cn/tags/shortcodes/</loc>
     <lastmod>2018-03-07T16:01:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -233,14 +268,14 @@
   </url>
   
   <url>
-    <loc>http://wuxiaomeng.cn/categories/golang/</loc>
+    <loc>http://wuxiaomeng.cn/tags/golang/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://wuxiaomeng.cn/tags/golang/</loc>
+    <loc>http://wuxiaomeng.cn/categories/golang/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -296,14 +331,14 @@
   </url>
   
   <url>
-    <loc>http://wuxiaomeng.cn/categories/syntax-highlighting/</loc>
+    <loc>http://wuxiaomeng.cn/tags/syntax-highlighting/</loc>
     <lastmod>2017-08-30T16:01:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://wuxiaomeng.cn/tags/syntax-highlighting/</loc>
+    <loc>http://wuxiaomeng.cn/categories/syntax-highlighting/</loc>
     <lastmod>2017-08-30T16:01:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

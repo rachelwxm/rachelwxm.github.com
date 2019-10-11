@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Wu Xiaomeng&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 04 Mar 2019 16:01:23 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Oct 2019 13:34:23 +0800</lastBuildDate>
     
 	<atom:link href="http://wuxiaomeng.cn/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python</title>
+      <link>http://wuxiaomeng.cn/categories/python/</link>
+      <pubDate>Fri, 11 Oct 2019 13:34:23 +0800</pubDate>
+      
+      <guid>http://wuxiaomeng.cn/categories/python/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>docs</title>

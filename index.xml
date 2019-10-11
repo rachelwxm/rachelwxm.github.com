@@ -6,10 +6,108 @@
     <description>Recent content on Wu Xiaomeng&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 04 Mar 2019 16:01:23 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Oct 2019 13:34:23 +0800</lastBuildDate>
     
         <atom:link href="http://wuxiaomeng.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>http://wuxiaomeng.cn/about/</link>
+      <pubDate>Wed, 09 Oct 2019 21:28:52 +0800</pubDate>
+      
+      <guid>http://wuxiaomeng.cn/about/</guid>
+      
+        <description>&lt;p&gt;Hugo is a static site engine written in Go.&lt;/p&gt;
+
+&lt;p&gt;It makes use of a variety of open source projects including:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;Cobra&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/viper&#34;&gt;Viper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/jWalterWeatherman&#34;&gt;J Walter Weatherman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/cast&#34;&gt;Cast&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Learn more and contribute on &lt;a href=&#34;https://github.com/gohugoio&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Python Speed Test</title>
+      <link>http://wuxiaomeng.cn/python-speed-test/</link>
+      <pubDate>Fri, 11 Oct 2019 13:34:23 +0800</pubDate>
+      
+      <guid>http://wuxiaomeng.cn/python-speed-test/</guid>
+      
+        <description>&lt;p&gt;参照 &lt;a href=&#34;https://www.ibm.com/developerworks/cn/linux/l-cn-python-optim/index.html&#34;&gt;Python 代码性能优化技巧&lt;/a&gt; 文章测试python提速。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;优化前的代码（01.flow-a.py ）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from time import time 
+t = time() 
+lista = [1,2,3,4,5,6,7,8,9,10] 
+listb =[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.01] 
+for i in range (1000000): 
+for a in range(len(lista)): 
+    for b in range(len(listb)): 
+        x=lista[a]+listb[b] 
+print &amp;quot;total run time:&amp;quot;
+print time()-t
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[wuxiaomeng@WudeMacBook-Pro ~/Desktop/python/01.speedup ]
+$python 01.flow-a.py 
+total run time:
+21.2082309723
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;参照原文优化后（01.flow-b.py）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from time import time 
+t = time() 
+lista = [1,2,3,4,5,6,7,8,9,10] 
+listb =[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.01] 
+len1=len(lista) 
+len2=len(listb) 
+for i in xrange (1000000): 
+for a in xrange(len1): 
+    temp=lista[a] 
+    for b in xrange(len2): 
+        x=temp+listb[b] 
+print &amp;quot;total run time:&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[wuxiaomeng@WudeMacBook-Pro ~/Desktop/python/01.speedup ]
+$python 01.flow-b.py 
+total run time:
+17.1609051228
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用列表解析优化后（01.flow-c.py）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from time import time 
+t = time() 
+lista = [1,2,3,4,5,6,7,8,9,10] 
+listb =[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.01] 
+len1=len(lista) 
+len2=len(listb) 
+for i in xrange (1000000): 
+x = [a+b for a in lista for b in listb]
+print &amp;quot;total run time:&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[wuxiaomeng@WudeMacBook-Pro ~/Desktop/python/01.speedup ]
+$python 01.flow-c.py 
+total run time:
+12.3668849468
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Posts</title>
