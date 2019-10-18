@@ -18,18 +18,31 @@
       
       <guid>http://wuxiaomeng.cn/about/</guid>
       
-        <description>&lt;p&gt;Hugo is a static site engine written in Go.&lt;/p&gt;
+        <description>
 
-&lt;p&gt;It makes use of a variety of open source projects including:&lt;/p&gt;
+&lt;h4 id=&#34;wu-xiaomeng-rachel&#34;&gt;Wu Xiaomeng(Rachel)&lt;/h4&gt;
+
+&lt;h4 id=&#34;contact&#34;&gt;Contact&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;Cobra&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/viper&#34;&gt;Viper&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/jWalterWeatherman&#34;&gt;J Walter Weatherman&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/cast&#34;&gt;Cast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Email: rachelwu123#gmail.com&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Learn more and contribute on &lt;a href=&#34;https://github.com/gohugoio&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;edutation&#34;&gt;Edutation&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2011.09-2014.06 Master, Botany and Bioinformatic, CAS&lt;/li&gt;
+&lt;li&gt;2007.09-2011.06 Bachelor, Biological Engineering, TJU&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;interest&#34;&gt;Interest&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bioinformatics&lt;/li&gt;
+&lt;li&gt;Machine Learning&lt;/li&gt;
+&lt;li&gt;Biotechnology&lt;/li&gt;
+&lt;li&gt;DIY&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
