@@ -10,13 +10,62 @@
   
   <url>
     <loc>http://wuxiaomeng.cn/categories/</loc>
-    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
+    <lastmod>2019-10-25T16:42:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/tags/linux/</loc>
+    <lastmod>2019-10-25T16:42:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://wuxiaomeng.cn/post/</loc>
+    <lastmod>2019-10-25T16:42:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/tags/</loc>
+    <lastmod>2019-10-25T16:42:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/post/tools/</loc>
+    <lastmod>2019-10-25T16:42:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/tags/tools/</loc>
+    <lastmod>2019-10-25T16:42:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/</loc>
+    <lastmod>2019-10-25T16:42:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2019-10-25T16:42:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://wuxiaomeng.cn/categories/python/</loc>
     <lastmod>2019-10-11T13:34:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -30,28 +79,7 @@
   </url>
   
   <url>
-    <loc>http://wuxiaomeng.cn/categories/python/</loc>
-    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://wuxiaomeng.cn/post/python-speed-test/</loc>
-    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://wuxiaomeng.cn/tags/</loc>
-    <lastmod>2019-10-11T13:34:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://wuxiaomeng.cn/</loc>
     <lastmod>2019-10-11T13:34:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
